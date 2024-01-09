@@ -7,6 +7,7 @@ We get a list of Space objects reflecting the seed data.
 """
 def test_get_all_records(db_connection): # See conftest.py to learn what `db_connection` is.
     # Seed our database with some test data
+    db_connection.seed("seeds/makersbnb.sql")
     repository = SpaceRepository(db_connection) # Create a new SpaceRepository
 
     spaces = repository.all() # Get all spaces
@@ -22,6 +23,7 @@ When we call SpaceRepository#create
 We get a new record in the database.
 """
 def test_create_record(db_connection):
+    db_connection.seed("seeds/makersbnb.sql")
     repository = SpaceRepository(db_connection)
 
     created_space = repository.create(Space(None, "another_space_name", "another_description", 2, 1))
