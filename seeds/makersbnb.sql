@@ -10,6 +10,7 @@ CREATE TABLE users(
 );
 
 -- Drop the 'spaces' table if it exists, along with any dependent objects
+DROP SEQUENCE IF EXISTS spaces;
 DROP TABLE IF EXISTS spaces;
 
 -- Create the 'spaces' table
