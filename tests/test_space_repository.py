@@ -23,6 +23,7 @@ When we call SpaceRepository#create
 We get a new record in the database.
 """
 def test_create_record(db_connection):
+    
     db_connection.seed("seeds/makersbnb.sql")
     repository = SpaceRepository(db_connection)
 
@@ -35,4 +36,5 @@ def test_create_record(db_connection):
         Space(2, "another_space_name", "another_description", 2, 1)
     ]
     
+    db_connection.execute('DELETE FROM spaces WHERE space_name = %s',["another_space_name"])
 

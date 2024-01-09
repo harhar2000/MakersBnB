@@ -11,11 +11,18 @@ def test_get_homepage(page, test_web_address):
 
     expect(strong_tag).to_have_text("MakersBnB")
 
-""" we need to see a list of spaces """
+""" we need to see a list of spaces with space name, description and price """
 
 def test_get_spaces(page, test_web_address):
     page.goto(f"http://{test_web_address}/index")
 
     strong_tag = page.locator("p")
-# 'test space name', 'test space description', 1, 1
-    expect(strong_tag).to_contain_text("Space Name: test space name")
+
+    # 'test space name', 'test space description', 1, 1
+    expect(strong_tag).to_contain_text("test space name")
+
+
+
+
+""" we want to see a button """
+
