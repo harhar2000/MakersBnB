@@ -16,5 +16,3 @@ class Space:
     # This method makes it look nicer when we print an Artist
     def __repr__(self):
         return f"Space({self.id}, {self.space_name}, {self.space_description}, {self.price}, {self.user_id})"
-
-   
