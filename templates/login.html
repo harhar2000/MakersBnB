@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="post">
+    {% if errors %}
+        <p class="t-errors">
+        There were errors with your submission: {{ errors }}
+        </p>
+    {% endif %}
+    <p>
+        <label for="user_name">User</label>
+        <input type="text" name="title" id="title">
+    </p>
+    <p>
+        <label for="user_password">Password</label>
+        <input type="text" name="author_name" id="author_name">
+    </p>
+    <p>
+        <input type="submit" value="Login">
+    </p>
+    </form>
+</body>
+</html>

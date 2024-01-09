@@ -15,6 +15,10 @@ app = Flask(__name__)
 def get_index():
     return render_template('index.html')
 
+@app.route('/login',methods=['GET'])
+def get_login():
+    return render_template('login.html')
+
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database
 # if started in test mode.
