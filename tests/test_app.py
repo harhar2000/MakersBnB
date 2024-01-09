@@ -18,4 +18,4 @@ def test_get_spaces(page, test_web_address):
 
     strong_tag = page.locator("p")
 # 'test space name', 'test space description', 1, 1
-    expect(strong_tag).toContainText("Space Name: test space name")
+    expect(strong_tag).to_contain_text("Space Name: test space name")
