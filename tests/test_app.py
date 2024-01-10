@@ -33,6 +33,30 @@ def test_get_space_description(page, test_web_address):
 def test_list_a_space_button(page, test_web_address):
     page.goto(f"http://{test_web_address}/index")
     page.click("text='List a Space'")
+    #page.screenshot(path="screenshot.png", full_page = True)
 
-    space_name_p = page.locator("div > h1:has-text('List a Space')")
+    space_name_p = page.locator("body > h1:has-text('List a Space')")
+    
     expect(space_name_p).to_be_visible()
+
+
+""" List a space form adds data to the spaces database"""
+
+def test_list_a_space_adds_a_space(page, test_web_address, db_connection):
+    page.set_default_timeout(1000)
+    db_connection.seed('seeds/makersbnb.sql')
+    page.goto(f"http://{test_web_address}/list_a_space")
+
+    page.fill('input[name=space_name]', "My House")
+    page.fill('input[name=space_description]', "Spacious Room")
+    page.fill('input[name=price]', "20")
+    page.click("text='Create Space'")
+    page.goto(f"http://{test_web_address}/index")
+
+    page.screenshot(path="screenshot_2.png", full_page=True)
+
+    space_name_p = page.locator("div > p:has-text('Space Name: My House')")
+
+    expect(space_name_p).to_be_visible()
+
+

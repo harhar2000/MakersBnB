@@ -24,14 +24,17 @@ def get_spaces():
 def get_list_a_space():
     return render_template('spaces/list_a_space.html')
 
-@app.route('/list_a_space', methods=['GET'])
-def get_spaces():
+@app.route('/list_a_space', methods=['POST'])
+def create_spaces():
     connection = get_flask_database_connection(app)
     repository = SpaceRepository(connection)
-    space = Space(None, request.form["space_name"], request.form["space_description"], request.form["price"], request.form["user_id"])
+    space = Space(None, request.form["space_name"], request.form["space_description"], request.form["price"], 1)
     
-    new_space = repository.create(space)
-    return redirect('/space_successfully_listed')
+    repository.create(space)
+    return redirect('/index')
+
+
+
 
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database
