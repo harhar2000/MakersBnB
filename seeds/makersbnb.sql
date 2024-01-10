@@ -10,10 +10,12 @@ CREATE TABLE users(
 );
 
 -- Drop the 'spaces' table if it exists, along with any dependent objects
+login_page
+
 
 DROP TABLE spaces;
 
-
+main
 
 -- Create the 'spaces' table
 CREATE TABLE spaces(
@@ -26,7 +28,7 @@ CREATE TABLE spaces(
 );
 
 -- Insert a test record into the 'users' table
-INSERT INTO users (user_name, email, user_password) VALUES ('test user name', 'test email', 'test password');
+INSERT INTO users (user_name, email, user_password) VALUES ('test user name','test email', 'test password');
 
 -- Insert a test record into the 'spaces' table
 INSERT INTO spaces (space_name, space_description, price, user_id) VALUES ('test space name', 'test space description', 1, 1);

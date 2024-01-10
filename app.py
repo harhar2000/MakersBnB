@@ -1,8 +1,13 @@
 import os
+login_page
+
 from flask import Flask, request, render_template, redirect
 from lib.database_connection import get_flask_database_connection
 from lib.space_repository import SpaceRepository
 from lib.space import Space
+from lib.login_repository import LoginRepository
+from lib.login import LoginUser
+main
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -13,6 +18,45 @@ app = Flask(__name__)
 # Returns the homepage
 # Try it:
 #   ; open http://localhost:5000/index
+login_page
+
+
+
+@app.route('/login',methods=['GET'])
+def get_login():
+    return render_template('login.html')
+
+
+@app.route("/login", methods=["POST"])
+def login_user():
+    connection = get_flask_database_connection(app)
+    repository = LoginRepository(connection)
+    # validator = LoginValidator(
+    #     request.form['email'],
+    #     request.form['user_password']
+    # )
+    # if not validator.is_valid():
+    #     errors = validator.generate_errors()
+    #     return render_template("/login.html", errors=errors)
+    # login = Login(
+    #     None,
+    #     validator.get_valid_email(),
+    #     validator.get_valid_user_password(),
+    #     1
+    # )
+
+    id = ""
+    email = ""
+    user_name = request.form['user_name']
+    user_password = request.form['user_password']
+    result = repository.find(user_name, user_password)
+    if result is not None:
+        return redirect(f"/welcome") #change to space list
+    else:
+        return redirect(f"/login") #change to sing up page (return)
+
+
+
 @app.route('/index', methods=['GET'])
 def get_spaces():
     connection = get_flask_database_connection(app)
@@ -32,6 +76,7 @@ def create_spaces():
     
     repository.create(space)
     return redirect('/index')
+main
 
 
 

@@ -2,6 +2,24 @@ from playwright.sync_api import Page, expect
 
 # Tests for your routes go here
 
+login_page
+"""
+We can render the index page
+"""
+
+def test_get_login(page, test_web_address):
+    
+    page.goto(f"http://{test_web_address}/login")
+
+    
+    strong_tag = page.locator("p")
+
+    
+    expect(strong_tag).to_have_text("user")
+    expect(strong_tag).to_have_text("password")
+    expect(strong_tag).to_have_text("Login")
+    
+
 """ we can render the homepage """
 
 def test_get_homepage(page, test_web_address):
@@ -60,3 +78,4 @@ def test_list_a_space_adds_a_space(page, test_web_address, db_connection):
     expect(space_name_p).to_be_visible()
 
 
+ main
