@@ -6,23 +6,27 @@
 </head>
 <body>
     <h1>Login</h1>
+    
     <form action="/login" method="post">
     {% if errors %}
+
         <p class="t-errors">
         There were errors with your submission: {{ errors }}
         </p>
     {% endif %}
     <p>
-        <label for="user">User</label>
-        <input type="text" name="title" id="title">
+
+        <label for="user_name">User Name</label>
+
+        <input type="text" name="user_name" id="user_name">
     </p>
     <p>
-        <label for="password">Password</label>
-        <input type="text" name="author_name" id="author_name">
+        <label for="user_password">Password</label>
+        <input type="text" name="user_password" id="user_password">
     </p>
     <p>
+
         <input type="submit" value="Login">
     </p>
     </form>
 </body>
-</html>
