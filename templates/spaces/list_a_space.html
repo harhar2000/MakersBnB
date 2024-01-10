@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List a Space</title>
+        <link rel="stylesheet" href="/static/style.css" >
+    </head>
+    <body>
+        <h1>List a Space</h1>
+        <form action="/list_a_space" method="POST">
+            <p>
+                <label for="space_name">Space Name</label>
+                <input type="text" name="space_name" id="space_name">
+            </p>
+            <p>
+                <label for="space_description">Space Description</label>
+                <input type="text" name="space_description" id="space_description">
+            </p>
+            <p>
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price">
+            </p>
+                <input type="Submit" value="Create Space">
+            
+        </form>
+    </body>
+</html>

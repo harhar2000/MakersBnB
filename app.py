@@ -1,8 +1,13 @@
 import os
-from flask import Flask, request,redirect, render_template
+login_page
+
+from flask import Flask, request, render_template, redirect
 from lib.database_connection import get_flask_database_connection
+from lib.space_repository import SpaceRepository
+from lib.space import Space
 from lib.login_repository import LoginRepository
 from lib.login import LoginUser
+main
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -13,18 +18,8 @@ app = Flask(__name__)
 # Returns the homepage
 # Try it:
 #   ; open http://localhost:5000/index
-# @app.route('/index', methods=['GET'])
-# def get_index():
-    # return render_template('index.html')
+login_page
 
-# @app.route('/login', methods=['GET', 'POST'])
-# def post_login():
-#     if request.method == 'POST':
-#         connection = get_flask_database_connection(app)
-#         repository = LoginRepository(connection)  # check the Class name
-#         login = LoginUser(None, request.form['user_name'], request.form['user_password'])
-#         repository.create(login)  # check the Class Name and names
-#     return render_template('login.html')
 
 
 @app.route('/login',methods=['GET'])
@@ -62,6 +57,27 @@ def login_user():
 
 
 
+@app.route('/index', methods=['GET'])
+def get_spaces():
+    connection = get_flask_database_connection(app)
+    repository = SpaceRepository(connection)
+    spaces = repository.all()
+    return render_template('spaces/index.html', spaces=spaces)
+
+@app.route('/list_a_space', methods=['GET'])
+def get_list_a_space():
+    return render_template('spaces/list_a_space.html')
+
+@app.route('/list_a_space', methods=['POST'])
+def create_spaces():
+    connection = get_flask_database_connection(app)
+    repository = SpaceRepository(connection)
+    space = Space(None, request.form["space_name"], request.form["space_description"], request.form["price"], 1)
+    
+    repository.create(space)
+    return redirect('/index')
+main
+
 
 
 
@@ -69,4 +85,4 @@ def login_user():
 # They also start the server configured to use the test database
 # if started in test mode.
 if __name__ == '__main__':
-    app.run(debug=True, port=int(os.environ.get('PORT', 5000)))
+    app.run(debug=True, port=int(os.environ.get('PORT', 4845)))

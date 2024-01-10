@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MakersBnB</title>
+        <link rel="stylesheet" href="/static/style.css" >
+    </head>
+    <body>
+        <h1>MakersBnB</h1>
+        <a href="/list_a_space">List a Space</a>
+        <ul>
+            {% for space in spaces %}
+            <div>
+                <p>Space Name: {{space.space_name}}</p>
+                
+                <p>Description: {{space.space_description}}</p>
+            </div>
+            {% endfor %}
+        </ul>
+        
+    </body>
+</html>
