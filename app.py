@@ -7,6 +7,7 @@ from lib.space_repository import SpaceRepository
 from lib.space import Space
 from lib.login_repository import LoginRepository
 from lib.login import LoginUser
+from lib.login_validator import LoginValidator
 main
 
 # Create a new Flask app
@@ -31,19 +32,19 @@ def get_login():
 def login_user():
     connection = get_flask_database_connection(app)
     repository = LoginRepository(connection)
-    # validator = LoginValidator(
-    #     request.form['email'],
-    #     request.form['user_password']
-    # )
-    # if not validator.is_valid():
-    #     errors = validator.generate_errors()
-    #     return render_template("/login.html", errors=errors)
-    # login = Login(
-    #     None,
-    #     validator.get_valid_email(),
-    #     validator.get_valid_user_password(),
-    #     1
-    # )
+    validator = LoginValidator(
+        request.form['user_name'],
+        request.form['user_password']
+    )
+    if not validator.is_valid():
+        errors = validator.generate_errors()
+        return render_template("/login.html", errors=errors)
+    login = LoginUser(
+        None,
+        validator.get_valid_email(),
+        validator.get_valid_user_password(),
+        1
+    )
 
     id = ""
     email = ""
