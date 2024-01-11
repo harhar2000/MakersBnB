@@ -109,7 +109,24 @@ def create_spaces():
     repository.create(space)
     return redirect('/index')
 
- 
+@app.route('/requests', methods=['GET'])
+def get_requests():
+    return render_template('spaces/requests.html')
+
+@app.route('/requests', methods=['POST'])
+def get_requests_page():
+    connection = get_flask_database_connection(app)
+    repository = SpaceRepository(connection)
+    user = request.form["user_name"]
+    spaces = repository.find_by_username(user)
+
+    return render_template('/requests', spaces =spaces)
+
+    
+
+
+
+
 
 
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Requests</title>
+        <link rel="stylesheet" href="/static/style.css" >
+    </head>
+    <body>
+        <h1>Requests</h1>
+
+        <form action="/requests" method="POST"></form>
+            <p>
+                <label for="user_name">Username</label>
+                <input type="text" name="user_name" id="user_name">
+            </p>
+            <p>
+                <input type="submit" name="Submit">
+            </p>
+        <ul>
+            {% for space in spaces %}
+            <div>
+                <p>Space Name: {{space.space_name}}</p>
+                
+                <p>Description: {{space.space_description}}</p>
+
+                <p>Description: {{space.price}}</p>
+            </div>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
