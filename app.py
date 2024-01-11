@@ -15,28 +15,37 @@ app = Flask(__name__)
 #   ; open http://localhost:5000/index
 @app.route('/index', methods=['GET'])
 def get_index():
-    return render_template('index.html')
+    return render_template('users/index.html')
+
 
 @app.route("/index/new")
 def get_sign_up_page():
-    return render_template("new.html")
+    return render_template("users/new.html")
 
 
-@app.route("/index", methods=["POST"])
+@app.route("/index/about", methods=['GET'])
+def get_about():
+    return render_template('users/about.html')
 
+
+@app.route("/index/new", methods=["POST"])
 def create_user():
     connection = get_flask_database_connection(app)
     repository = UserRepository(connection)
 
     user_name = request.form['user_name']
     email = request.form['email']
-    password = request.foem['user_password']
+    password = request.form['user_password']
     
     user = User(None, user_name, email, password)
 
+    if not user.is_valid():
+        errors = user.generate_errors()
+        return render_template("users/new.html", errors=errors)
+
     repository.create(user)
 
-    return redirect(f"/index/{user.user_id}")
+    return redirect('/index')
 
 
 
