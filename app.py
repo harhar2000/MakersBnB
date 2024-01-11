@@ -109,7 +109,6 @@ def create_spaces():
     repository.create(space)
     return redirect('/spaces')
 
- 
 
 
 
