@@ -89,7 +89,7 @@ def login_user():
 
 
 
-@app.route('/index', methods=['GET'])
+@app.route('/spaces', methods=['GET'])
 def get_spaces():
     connection = get_flask_database_connection(app)
     repository = SpaceRepository(connection)
@@ -120,7 +120,7 @@ def get_requests_page():
     user = request.form["user_name"]
     spaces = repository.find_by_username(user)
 
-    return render_template('/requests', spaces =spaces)
+    return render_template('spaces/requests.html', spaces=spaces)
 
     
 

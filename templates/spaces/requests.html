@@ -7,7 +7,7 @@
     <body>
         <h1>Requests</h1>
 
-        <form action="/requests" method="POST"></form>
+        <form action="/requests" method="POST">
             <p>
                 <label for="user_name">Username</label>
                 <input type="text" name="user_name" id="user_name">
@@ -15,6 +15,7 @@
             <p>
                 <input type="submit" name="Submit">
             </p>
+        </form>
         <ul>
             {% for space in spaces %}
             <div>
@@ -22,7 +23,7 @@
                 
                 <p>Description: {{space.space_description}}</p>
 
-                <p>Description: {{space.price}}</p>
+                <p>Price: {{space.price}}</p>
             </div>
             {% endfor %}
         </ul>
