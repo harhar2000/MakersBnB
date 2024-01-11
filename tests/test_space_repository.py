@@ -38,3 +38,11 @@ def test_create_record(db_connection):
     
     db_connection.execute('DELETE FROM spaces WHERE space_name = %s',["another_space_name"])
 
+def test_find_by_username(db_connection):
+    db_connection.seed("seeds/makersbnb.sql")
+    repository = SpaceRepository(db_connection)
+
+    spaces = repository.find_by_username('test user name')
+    assert spaces == [
+        Space(1,'test space name', 'test space description', 1, 1)
+    ]
