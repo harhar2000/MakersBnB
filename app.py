@@ -72,7 +72,7 @@ def login_user():
         return render_template("/login.html", errors=errors)
     login = LoginUser(
         None,
-        validator.get_valid_email(),
+        validator.get_valid_user_name(),
         validator.get_valid_user_password(),
         1
     )
