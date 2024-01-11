@@ -76,24 +76,6 @@ def test_post_login(page, test_web_address, db_connection):
     login_button = login_element.locator('input[type="submit"][value="Login"]')
     assert login_button.is_visible()
 
-    
-<<<<<<< HEAD
-
-
-=======
-    h1_tag = page.locator("h1")
-    expect(h1_tag).to_have_text("Login")
-    # expect(strong_tag).to_have_text("There were errors with your submission:")
-    
-
-
-"""
-Tests for space page/function
-"""
-
->>>>>>> 42d467ce751b6b98c1219cb0e7f92109ea9f759d
-
-""" we can render the homepage """
 
 def test_get_list_of_spaces(page, test_web_address):
     page.goto(f"http://{test_web_address}/spaces")
