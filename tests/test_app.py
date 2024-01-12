@@ -1,5 +1,4 @@
 from playwright.sync_api import Page, expect
-"""
 # Tests for your routes go here
 
 def test_get_index(page, test_web_address, db_connection):
@@ -72,8 +71,8 @@ def test_get_login(page, test_web_address):
     expect(strong_tag).to_have_text("password")
     expect(strong_tag).to_have_text("Login")
     
-"""
-""" we can render the homepage """"""
+
+""" we can render the homepage """
 
 def test_get_homepage(page, test_web_address):
     page.goto(f"http://{test_web_address}/index")
@@ -129,7 +128,7 @@ def test_list_a_space_adds_a_space(page, test_web_address, db_connection):
     space_name_p = page.locator("div > p:has-text('Space Name: My House')")
 
     expect(space_name_p).to_be_visible()
-"""
+
 
 """ We want to see a request page with a list of spaces for a specific host """
 
@@ -137,8 +136,8 @@ def test_find_users_spaces(page,test_web_address, db_connection):
     page.set_default_timeout(1000)
     db_connection.seed('seeds/makersbnb.sql')
     page.goto(f"http://{test_web_address}/requests")
-
     page.fill('input[name=user_name]', "test user name")
+    page.click("text='Submit'")
 
     space_name_p = page.locator("div > p:has-text('Space Name: test space name')")
 

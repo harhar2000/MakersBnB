@@ -13,19 +13,18 @@
                 <input type="text" name="user_name" id="user_name">
             </p>
             <p>
-                <input type="submit" name="Submit">
+                <input type="submit" value="Submit">
             </p>
         </form>
-        <ul>
-            {% for space in spaces %}
-            <div>
-                <p>Space Name: {{space.space_name}}</p>
-                
-                <p>Description: {{space.space_description}}</p>
 
-                <p>Price: {{space.price}}</p>
-            </div>
-            {% endfor %}
-        </ul>
+        {% for space in spaces %}
+        <div>
+            <p>Space Name: {{space.space_name}}</p>
+            
+            <p>Description: {{space.space_description}}</p>
+
+            <p>Price: {{space.price}}</p>
+        </div>
+        {% endfor %}
     </body>
 </html>
