@@ -1,7 +1,7 @@
 from lib.space import Space
 
 """
-Space constructs with an id, soace_name and space_description, price, user_id
+Space constructs with an id, soace_name and space_description, price, host_id
 """
 def test_space_constructs():
     space = Space(1, "test_space_name", "test_space_description", 2, 1)
@@ -9,7 +9,7 @@ def test_space_constructs():
     assert space.space_name == "test_space_name"
     assert space.space_description == "test_space_description"
     assert space.price == 2
-    assert space.user_id == 1
+    assert space.host_id == 1
     
 
 """
