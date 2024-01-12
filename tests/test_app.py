@@ -60,23 +60,22 @@ def test_create_new_user(page, test_web_address, db_connection):
 
 
 
-def test_get_login(page, test_web_address):
-    
+def test_post_login(page, test_web_address, db_connection):
+    page.set_default_timeout(1000)  
+    db_connection.seed("seeds/makersbnb.sql")
     page.goto(f"http://{test_web_address}/login")
+    page.fill('input[name=user_name]', "User Name")
+    page.fill('input[name=user_password]', "Password")
+    page.click('text="Login"')
+    user_tag = page.locator(".t-user")
+    assert user_tag.inner_text().strip() == "User Name"
+    pass_tag = page.locator(".t-password")
+    assert pass_tag.inner_text().strip() == "Password"
+    login_element = page.locator(".t-login")
+    assert login_element.is_visible()
+    login_button = login_element.locator('input[type="submit"][value="Login"]')
+    assert login_button.is_visible()
 
-    
-    h1_tag = page.locator("h1")
-    expect(h1_tag).to_have_text("Login")
-    # expect(strong_tag).to_have_text("There were errors with your submission:")
-    
-
-
-"""
-Tests for space page/function
-"""
-
-
-""" we can render the homepage """
 
 def test_get_list_of_spaces(page, test_web_address):
     page.goto(f"http://{test_web_address}/spaces")
