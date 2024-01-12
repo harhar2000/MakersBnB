@@ -17,7 +17,7 @@ app = Flask(__name__)
 # GET /index
 # Returns the homepage
 # Try it:
-#   ; open http://localhost:5000/index
+#   ; open http://localhost:4845/index
 @app.route('/index', methods=['GET'])
 def get_index():
     return render_template('users/index.html')
@@ -50,7 +50,7 @@ def create_user():
 
     repository.create(user)
 
-    return redirect('/index')
+    return redirect('/login')
 
 
 
@@ -72,7 +72,7 @@ def login_user():
         return render_template("/login.html", errors=errors)
     login = LoginUser(
         None,
-        validator.get_valid_email(),
+        validator.get_valid_user_name(),
         validator.get_valid_user_password(),
         1
     )
@@ -83,7 +83,7 @@ def login_user():
     user_password = request.form['user_password']
     result = repository.find(user_name, user_password)
     if result is not None:
-        return redirect(f"/welcome") #change to space list
+        return redirect(f"/spaces") #change to space list
     else:
         return redirect(f"/login") #change to sing up page (return)
 
@@ -94,7 +94,7 @@ def get_spaces():
     connection = get_flask_database_connection(app)
     repository = SpaceRepository(connection)
     spaces = repository.all()
-    return render_template('spaces/index.html', spaces=spaces)
+    return render_template('spaces/spaces.html', spaces=spaces)
 
 @app.route('/list_a_space', methods=['GET'])
 def get_list_a_space():
@@ -107,7 +107,8 @@ def create_spaces():
     space = Space(None, request.form["space_name"], request.form["space_description"], request.form["price"], 1)
     
     repository.create(space)
-    return redirect('/index')
+    return redirect('/spaces')
+
 
 @app.route('/requests', methods=['GET'])
 def get_requests():
@@ -121,17 +122,6 @@ def get_requests_page():
     spaces = repository.find_by_username(user)
 
     return render_template('spaces/requests.html', spaces=spaces)
-
-    
-
-
-
-
-
-
-
-
-
 
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database
