@@ -86,12 +86,14 @@ def test_get_list_of_spaces(page, test_web_address):
 
 def test_get_space_name(page, test_web_address):
     page.goto(f"http://{test_web_address}/spaces")
+    page.goto(f"http://{test_web_address}/spaces")
 
     space_name_p = page.locator("div > p:has-text('Space Name: test space name')")
 
     expect(space_name_p).to_be_visible()
 
 def test_get_space_description(page, test_web_address):
+    page.goto(f"http://{test_web_address}/spaces")
     page.goto(f"http://{test_web_address}/spaces")
 
     space_name_p = page.locator("div > p:has-text('Description: test space description')")
@@ -102,6 +104,7 @@ def test_get_space_description(page, test_web_address):
 """ we want to see a button """
 
 def test_list_a_space_button(page, test_web_address):
+    page.goto(f"http://{test_web_address}/spaces")
     page.goto(f"http://{test_web_address}/spaces")
     page.click("text='List a Space'")
     #page.screenshot(path="screenshot.png", full_page = True)
@@ -122,6 +125,7 @@ def test_list_a_space_adds_a_space(page, test_web_address, db_connection):
     page.fill('input[name=space_description]', "Spacious Room")
     page.fill('input[name=price]', "20")
     page.click("text='Create Space'")
+    page.goto(f"http://{test_web_address}/spaces")
     page.goto(f"http://{test_web_address}/spaces")
 
     page.screenshot(path="screenshot_2.png", full_page=True)
