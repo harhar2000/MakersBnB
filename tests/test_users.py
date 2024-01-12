@@ -30,7 +30,7 @@ def test_users_are_equal():
 
 
 """
-We can assess a book for validity
+We can assess a user for validity
 """
 def test_user_validity():
     assert User(1, "", "", "").is_valid() == False

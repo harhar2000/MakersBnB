@@ -17,7 +17,11 @@ app = Flask(__name__)
 # GET /index
 # Returns the homepage
 # Try it:
-#   ; open http://localhost:4845/index
+#   ; open http://localhost:5000/index
+
+"""
+Routes for Users
+"""
 @app.route('/index', methods=['GET'])
 def get_index():
     return render_template('users/index.html')
@@ -52,11 +56,13 @@ def create_user():
 
     return redirect('/login')
 
-
+"""
+Routes for login
+"""
 
 @app.route('/login',methods=['GET'])
 def get_login():
-    return render_template('login.html')
+    return render_template('login/login.html')
 
 
 @app.route("/login", methods=["POST"])
@@ -69,7 +75,7 @@ def login_user():
     )
     if not validator.is_valid():
         errors = validator.generate_errors()
-        return render_template("/login.html", errors=errors)
+        return render_template("login/login.html", errors=errors)
     login = LoginUser(
         None,
         validator.get_valid_email(),
@@ -87,7 +93,9 @@ def login_user():
     else:
         return redirect(f"/login") #change to sing up page (return)
 
-
+"""
+Routes for spaces
+"""
 
 @app.route('/spaces', methods=['GET'])
 def get_spaces():
@@ -108,8 +116,9 @@ def create_spaces():
     
     repository.create(space)
     return redirect('/spaces')
+    return redirect('/spaces')
 
- 
+
 
 
 
