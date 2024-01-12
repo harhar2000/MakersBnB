@@ -10,6 +10,9 @@
             color: rgb(2, 121, 213);
             font-size: 1.5em;
         }
+        .center {
+            text-align: center;
+        } 
         </style>
 
         <body>
@@ -35,19 +38,20 @@
                 </g>
               </svg>
 
-
-            <h1>
+          <div class="center">
+              <h2>
                 Sign up to MakersBnb!
-            </h1>
+            </h2>
+          
             <form action="/index/new" method="POST">
 
               {% if errors %}
-            <div
+            
                 class="t-errors">
                 Your form was absurd: {{errors}}
             {% endif %}
             
-            </div>
+            
             <br>
             
                 <label for="username">Username:</label><br>
@@ -61,7 +65,11 @@
             <p>
                 <a href="/index">Back to Homepage! </a>
             </p>
-        
+          </div>
+            
+              
+
+
         </body>
 </html>
 

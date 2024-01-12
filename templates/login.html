@@ -11,10 +11,13 @@
             color: rgb(2, 121, 213);
             font-size: 1.5em;
         }
+        .center {
+            text-align: center;
+        } 
         </style>
 
 
-  
+    <p class='t-about' style="text-align: right;"><a href="/index/about"> About</a></p>
 
     <body>
 
@@ -38,7 +41,8 @@
                 </g>
             </g>
             </g>
-        </svg>    
+        </svg> 
+        <div class="center">
         <h1>Login</h1>
         
         <form action="/login" method="post">
@@ -50,15 +54,20 @@
         {% endif %}
         <p>
 
-            <label for="user_name">User Name</label>
+            <label for="user_name">Username</label>
             <input type="text" name="user_name" id="user_name">
+            <br>
+            <br>
             <label for="user_password">Password</label>
             <input type=password name="user_password" id="user_password">
+            <br>
             <input type="submit" value="Login">
         </p>
         </form>
         <h3>
             <a href="/index">Back to Homepage! </a>
           </h3>
+        </div>   
+        
     </body>
 </html>
