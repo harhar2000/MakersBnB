@@ -18,6 +18,10 @@ app = Flask(__name__)
 # Returns the homepage
 # Try it:
 #   ; open http://localhost:5000/index
+
+"""
+Routes for Users
+"""
 @app.route('/index', methods=['GET'])
 def get_index():
     return render_template('users/index.html')
@@ -50,13 +54,15 @@ def create_user():
 
     repository.create(user)
 
-    return redirect('/index')
+    return redirect('/login')
 
-
+"""
+Routes for login
+"""
 
 @app.route('/login',methods=['GET'])
 def get_login():
-    return render_template('login.html')
+    return render_template('login/login.html')
 
 
 @app.route("/login", methods=["POST"])
@@ -69,7 +75,7 @@ def login_user():
     )
     if not validator.is_valid():
         errors = validator.generate_errors()
-        return render_template("/login.html", errors=errors)
+        return render_template("login/login.html", errors=errors)
     login = LoginUser(
         None,
         validator.get_valid_email(),
@@ -83,18 +89,20 @@ def login_user():
     user_password = request.form['user_password']
     result = repository.find(user_name, user_password)
     if result is not None:
-        return redirect(f"/welcome") #change to space list
+        return redirect(f"/spaces") #change to space list
     else:
         return redirect(f"/login") #change to sing up page (return)
 
+"""
+Routes for spaces
+"""
 
-
-@app.route('/index', methods=['GET'])
+@app.route('/spaces', methods=['GET'])
 def get_spaces():
     connection = get_flask_database_connection(app)
     repository = SpaceRepository(connection)
     spaces = repository.all()
-    return render_template('spaces/index.html', spaces=spaces)
+    return render_template('spaces/spaces.html', spaces=spaces)
 
 @app.route('/list_a_space', methods=['GET'])
 def get_list_a_space():
@@ -107,9 +115,9 @@ def create_spaces():
     space = Space(None, request.form["space_name"], request.form["space_description"], request.form["price"], 1)
     
     repository.create(space)
-    return redirect('/index')
+    return redirect('/spaces')
 
- 
+
 
 
 
