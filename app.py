@@ -116,7 +116,6 @@ def create_spaces():
     
     repository.create(space)
     return redirect('/spaces')
-    return redirect('/spaces')
 
 
 @app.route('/requests', methods=['GET'])
