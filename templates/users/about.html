@@ -34,50 +34,51 @@
             padding: 20px 0;
             text-align: center;
         }
-
+        .center {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .content-container {
+            max-width: 950px; /* Adjust the width as needed */
+            margin: auto;
+            text-align: left; /* Left align the text within the container */
+        }
         .container {
             max-width: 1200px; /* Larger width for better layout */
             margin: auto;
             padding: 0 20px; /* Padding for content */
             overflow: hidden;
         }
-
         .navigation {
             text-align: right;
             margin-top: -40px;
             padding-right: 10px;
         }
-
         .navigation a {
             color: #d4af37;
             margin-left: 20px;
             font-weight: bold;
             padding: 10px 15px;
         }
-
         .navigation a:hover {
             color: #b3962f;
         }
-
         .center {
             text-align: center;
             margin-top: 50px;
         }
-
         h1 {
             font-size: 3em;
             font-family: 'Montserrat', sans-serif;
             margin-bottom: 20px;
             color: #2a3d66; /* Match the primary color scheme */
         }
-
         h2 {
             font-size: 1.75em; /* Slightly larger for emphasis */
             font-family: 'Montserrat', sans-serif;
             color: #666;
             margin-bottom: 30px;
         }
-
         .button {
             transition: all 0.3s ease;
             display: inline-block;
@@ -88,12 +89,10 @@
             border: none; /* Remove border for cleaner look */
             transition: background-color 0.3s ease;
         }
-
         .button:hover {
             transform: scale(1.05);
             background-color: #1d2a4a;
         }
-
         .testimonials {
             background-color: #ffffff;
             padding: 40px; /* More padding for space */
@@ -103,16 +102,24 @@
             margin: 40px auto;
             font-family: 'Arial', sans-serif;
         }
-
+        .testimonials-grid {
+            display: flex; /* Enables flexbox layout */
+            justify-content: space-around; /* Spaces out the child elements evenly */
+            align-items: stretch; /* Aligns items vertically */
+            flex-wrap: wrap; /* Allows items to wrap into the next line on smaller screens */
+        }
         .testimonial-item {
             background-color: #f9f9f9;
             border: 1px solid #eaeaea;
             padding: 20px; /* More padding for space */
-            margin-bottom: 20px;
+            margin: 10px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            flex: 1 1 45%; /* Adjusts flex-grow, flex-shrink, and flex-basis */
+            min-width: 280px; /* Minimum width for each testimonial */
+            max-width: 45%; /* Maximum width for each testimonial */
+            box-sizing: border-box;
         }
-
         .testimonial-item p {
             font-size: 18px; /* Larger font size for readability */
             color: #555;
@@ -122,25 +129,21 @@
             border-radius: 50%;
             margin-right: 15px;
         }
-
         .testimonial-item strong {
             font-size: 16px; /* Slightly larger for emphasis */
             color: #333;
             display: block;
             margin-top: 10px;
         }
-
         .footer {
             background-color: #2a3d66; /* Consistent with header */
             color: #fff;
             padding: 5px 0;
             text-align: center;
         }
-
         .social-media {
             margin: 5px 0;
         }
-
         .social-icon {
             transition: all 0.3s ease;
             color: #fff;
@@ -179,12 +182,14 @@
         </g>
       </svg>
       <nav class="navigation">
+        <a href="/index">Homepage</a>
         <a href="/index/new" class="new-link">Sign Up</a>
         <a href="/login">Login</a>
       </nav>
     </header>
 
-    <div class=“container”>
+    <div class="container center">
+        <div class="content-container">
         <h1>About MakersBnB</h1>
         <p>Welcome to MakersBnB, the destination for travellers seeking unique stays and memorable experiences.</p>
         <p>At MakersBnB, we believe every journey is as individual as you. That’s why along with our high grade website, we curated a diverse collection of properties, each with its own character and charm.</p>
@@ -196,6 +201,7 @@
             <li><strong>Listing Spaces:</strong> List your space with us and join our community of hosts.</li>
             <li><strong>Manage Your Requests:</strong> As a host, go to the requests page to see who’s interested in staying at your space. Approve requests here.</li>
         </ol>
+        </div>
     </div>
 
     <div class="testimonials">
@@ -210,10 +216,6 @@
             </div>
         </div>
     </div>
-
-    <p>
-        <a href="/index">Back to Homepage! </a>
-    </p>
 
     <div class="footer">
             <div class="social-media">
