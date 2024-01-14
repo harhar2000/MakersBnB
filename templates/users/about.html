@@ -1,38 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>About MakersBnB</title>
+    <link rel="stylesheet" href="/static/style.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2 {
+            background-color: #f4f4f4;
             color: #333;
+            font-family: 'Open Sans', sans-serif; /* More modern font */
+            font-size: 16px;
+            line-height: 1.8; /* Increased line height for readability */
+            margin: 0;
+            padding: 0;
         }
-        p {
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #2a3d66;
+            color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px; /* Larger width for better layout */
+            margin: auto;
+            padding: 0 20px; /* Padding for content */
+            overflow: hidden;
+        }
+
+        .navigation {
+            text-align: right;
+            margin-top: -40px;
+            padding-right: 10px;
+        }
+
+        .navigation a {
+            color: #d4af37;
+            margin-left: 20px;
+            font-weight: bold;
+            padding: 10px 15px;
+        }
+
+        .navigation a:hover {
+            color: #b3962f;
+        }
+
+        .center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+            color: #2a3d66; /* Match the primary color scheme */
+        }
+
+        h2 {
+            font-size: 1.75em; /* Slightly larger for emphasis */
+            font-family: 'Montserrat', sans-serif;
             color: #666;
+            margin-bottom: 30px;
         }
-        ol {
-            color: #444;
+
+        .button {
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2a3d66;
+            color: white;
+            border-radius: 5px;
+            border: none; /* Remove border for cleaner look */
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            background-color: #1d2a4a;
+        }
+
+        .testimonials {
+            background-color: #ffffff;
+            padding: 40px; /* More padding for space */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px; /* Larger for better layout */
+            margin: 40px auto;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .testimonial-item {
+            background-color: #f9f9f9;
+            border: 1px solid #eaeaea;
+            padding: 20px; /* More padding for space */
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-item p {
+            font-size: 18px; /* Larger font size for readability */
+            color: #555;
+        }
+
+        .testimonial-item img {
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .testimonial-item strong {
+            font-size: 16px; /* Slightly larger for emphasis */
+            color: #333;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .footer {
+            background-color: #2a3d66; /* Consistent with header */
+            color: #fff;
+            padding: 5px 0;
+            text-align: center;
+        }
+
+        .social-media {
+            margin: 5px 0;
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px; /* Larger icons */
+        }
+        .social-icon:hover {
+            transform: scale(1.05);
+        }
+        .footer {
+            padding: 1px 0;
         }
     </style>
 </head>
-
-<style type="text/css">
-    body {
-        background-color: rgb(186, 186, 186);
-        color: rgb(2, 121, 213);
-        font-size: 1.5em;
-    }
-    </style>
-
-
 <body>
+    <header>
 
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="53.945" viewBox="0 0 260 53.945">
         <defs>
@@ -54,6 +178,11 @@
           </g>
         </g>
       </svg>
+      <nav class="navigation">
+        <a href="/index/new" class="new-link">Sign Up</a>
+        <a href="/login">Login</a>
+      </nav>
+    </header>
 
     <div class=“container”>
         <h1>About MakersBnB</h1>
@@ -69,9 +198,28 @@
         </ol>
     </div>
 
+    <div class="testimonials">
+        <div class="container testimonials-grid">
+            <div class="testimonial-item">
+                <p>"If I had a nickel for every time I thought about going back, I’d have enough to book another week at this charming place. Counting my nickels now..."</p>
+                <strong>- Taylor R.</strong>
+            </div>
+            <div class="testimonial-item">
+                <p>"The beds were so comfortable, I considered swapping my cloud-based software for an actual cloud from the mattress. Dreamy doesn't even start to cover it!"</p>
+                <strong>- Alex G.</strong>
+            </div>
+        </div>
+    </div>
+
     <p>
         <a href="/index">Back to Homepage! </a>
     </p>
 
+    <div class="footer">
+            <div class="social-media">
+                <a href="https://facebook.com/makersbnb" class="social-icon">Facebook</a>
+                <a href="https://twitter.com/makersbnb" class="social-icon">Twitter</a>
+            </div>
+    </div>
 </body>
 </html>

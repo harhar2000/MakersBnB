@@ -1,5 +1,4 @@
 from playwright.sync_api import Page, expect
-
 # Tests for your routes go here
 
 """
@@ -61,19 +60,22 @@ def test_create_new_user(page, test_web_address, db_connection):
 Tests for login page
 """
 
-def test_get_login(page, test_web_address):
+def test_post_login(page, test_web_address, db_connection):
+    page.set_default_timeout(1000)  
+    db_connection.seed("seeds/makersbnb.sql")
     page.goto(f"http://{test_web_address}/login")
-    h1_tag = page.locator('h1')
-    expect(h1_tag).to_have_text('Login')
+    page.fill('input[name=user_name]', "User Name")
+    page.fill('input[name=user_password]', "Password")
+    page.click('text="Login"')
+    user_tag = page.locator(".t-user")
+    assert user_tag.inner_text().strip() == "User Name"
+    pass_tag = page.locator(".t-password")
+    assert pass_tag.inner_text().strip() == "Password"
+    login_element = page.locator(".t-login")
+    assert login_element.is_visible()
+    login_button = login_element.locator('input[type="submit"][value="Login"]')
+    assert login_button.is_visible()
 
-
-
-"""
-Tests for spaces page/function
-"""
-
-
-""" we can render the homepage """
 
 def test_get_list_of_spaces(page, test_web_address):
     page.goto(f"http://{test_web_address}/spaces")
@@ -82,7 +84,7 @@ def test_get_list_of_spaces(page, test_web_address):
 
     expect(strong_tag).to_have_text("MakersBnB")
 
-""" we need to see a list of spaces with space name, description and price """
+#  we need to see a list of spaces with space name, description and price 
 
 def test_get_space_name(page, test_web_address):
     page.goto(f"http://{test_web_address}/spaces")
@@ -101,7 +103,7 @@ def test_get_space_description(page, test_web_address):
     expect(space_name_p).to_be_visible()
 
 
-""" we want to see a button """
+# we want to see a button 
 
 def test_list_a_space_button(page, test_web_address):
     page.goto(f"http://{test_web_address}/spaces")
@@ -114,7 +116,7 @@ def test_list_a_space_button(page, test_web_address):
     expect(space_name_p).to_be_visible()
 
 
-""" List a space form adds data to the spaces database"""
+# List a space form adds data to the spaces database
 
 def test_list_a_space_adds_a_space(page, test_web_address, db_connection):
     page.set_default_timeout(1000)
@@ -134,4 +136,16 @@ def test_list_a_space_adds_a_space(page, test_web_address, db_connection):
     expect(space_name_p).to_be_visible()
 
 
+""" We want to see a request page with a list of spaces for a specific host """
+
+def test_find_users_spaces(page,test_web_address, db_connection):
+    page.set_default_timeout(1000)
+    db_connection.seed('seeds/makersbnb.sql')
+    page.goto(f"http://{test_web_address}/requests")
+    page.fill('input[name=user_name]', "test user name")
+    page.click("text='Submit'")
+
+    space_name_p = page.locator("div > p:has-text('Space Name: test space name')")
+
+    expect(space_name_p).to_be_visible()
 

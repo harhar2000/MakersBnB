@@ -11,9 +11,6 @@ CREATE TABLE users(
 
 -- Drop the 'spaces' table if it exists, along with any dependent objects
 
-
-
-
 DROP TABLE spaces;
 
 
@@ -23,12 +20,14 @@ CREATE TABLE spaces(
     space_name TEXT,
     space_description TEXT,
     price INT,
-    user_id INT,
-    CONSTRAINT fk_users FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    host_id INT,
+    guest_id INT,
+    CONSTRAINT fk_host FOREIGN KEY (host_id) REFERENCES users(id) ON DELETE CASCADE,
+    CONSTRAINT fk_guest FOREIGN KEY (guest_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 -- Insert a test record into the 'users' table
 INSERT INTO users (user_name, email, user_password) VALUES ('test user name','test email', 'test password');
 
 -- Insert a test record into the 'spaces' table
-INSERT INTO spaces (space_name, space_description, price, user_id) VALUES ('test space name', 'test space description', 1, 1);
+INSERT INTO spaces (space_name, space_description, price, host_id) VALUES ('test space name', 'test space description', 1, 1);

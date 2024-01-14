@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>MakersBnB</title>
+        <title>Requests</title>
         <link rel="stylesheet" href="/static/style.css" >
     </head>
-
     <style type="text/css">
         body {
             background-color: rgb(186, 186, 186);
             color: rgb(2, 121, 213);
             font-size: 1.5em;
         }
+        .center {
+            text-align: center;
+        } 
         </style>
-
-<body>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="53.945" viewBox="0 0 260 53.945">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="53.945" viewBox="0 0 260 53.945">
     <defs>
       <clipPath id="clip-path">
         <rect id="Rectangle_639" data-name="Rectangle 639" width="260" height="53.945" fill="none"/>
@@ -34,25 +34,30 @@
       </g>
     </g>
   </svg>
-  
-  <p class='t-requests' style="text-align: right;"><a href="/requests">Requests <a href="/index/about">| About <a href ="/login"> | Sign Out</a></p>
+    <p class='t-requests' style="text-align: right;"><a href="/requests">Requests <a href="/index/about">| About <a href ="/login"> | Sign Out</a></p>
+    <body>
+     <div class="center">
+        <h1>Requests</h1>
 
-  
+        <form action="/requests" method="POST">
+            <p>
+                <label for="user_name">Username</label>
+                <input type="text" name="user_name" id="user_name">
+            </p>
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+        </div>
 
-        <h1>MakersBnB</h1>
-        <a href="/list_a_space">List a Space</a>
-        <ul>
-          {% for space in spaces %}
-          <div>
-              <p>Space Name: {{space.space_name}}</p>
-              
-              <p>Description: {{space.space_description}}</p>
+        {% for space in spaces %}
+        <div>
+            <p>Space Name: {{space.space_name}}</p>
+            
+            <p>Description: {{space.space_description}}</p>
 
-              <a href="/requests">Book</a>
-          </div>
-          {% endfor %}
-      </ul>
-      
-        
+            <p>Price: {{space.price}}</p>
+        </div>
+        {% endfor %}
     </body>
 </html>
