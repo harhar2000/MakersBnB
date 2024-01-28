@@ -1,5 +1,6 @@
 import os
 from flask import Flask, request, render_template, redirect
+from flask_bootstrap import Bootstrap
 from lib.database_connection import get_flask_database_connection
 from lib.space_repository import SpaceRepository
 from lib.space import Space
@@ -11,6 +12,7 @@ from lib.users import *
 
 # Create a new Flask app
 app = Flask(__name__)
+Bootstrap(app)
 
 # == Your Routes Here ==
 
