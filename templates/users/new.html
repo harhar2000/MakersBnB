@@ -79,6 +79,11 @@
         .signup-form-container input[type="submit"]:hover {
             background-color: #1d2a4a;
         }
+        .navbar-custom .nav-link:hover, .button:hover, input[type="submit"]:hover {
+            transform: scale(1.05);
+            color: #d4af37;
+            transition: transform 0.3s ease;
+        }
         .testimonials {
             background-color: #ffffff;
             padding: 20px;
@@ -133,6 +138,7 @@
         .social-media a:hover {
             color: #d4af37;
         }
+
     </style>  
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
@@ -188,7 +194,8 @@
                     <input type="text" id="email" name="email"><br>
                     <label for="password">Password:</label>
                     <input type="password" id="user_password" name="user_password"><br><br>
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Submit" class="button">
+
                 </form>
                 <br>
                 <p><a href="/index">Back to Homepage!</a></p>

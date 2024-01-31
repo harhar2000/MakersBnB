@@ -13,6 +13,15 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        body .navbar-custom .nav-link:hover, body .button:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
         }
         .navbar-custom {
             background-color: #2a3d66;
@@ -31,6 +40,10 @@
         .navbar-custom .navbar-nav .nav-link {
             color: #fff;
             font-size: 18px; /* Font size for the links */
+        }
+        .navbar-custom .nav-link:hover, .button:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
         }
         .navbar-custom .navbar-nav .nav-link:hover, /* Hover effect for nav links */
         .navbar-custom .btn:hover { /* Hover effect for buttons */
@@ -109,6 +122,7 @@
             background-color: #1d2a4a;
             color: #d4af37
         }
+
         .testimonials {
             background-color: #ffffff; /* Light background */
             padding: 20px;
@@ -263,6 +277,11 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+}); </script>
+
 
 </body>
 </html>
