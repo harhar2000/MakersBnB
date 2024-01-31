@@ -17,6 +17,18 @@
             flex-direction: column;
             align-items: center; /* Center content horizontally */
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;; /* Smooth transition for transform property */
+            animation: fadeIn 1s ease-out;
+        }
+        .card:hover {
+            transform: scale(1.05); /* Slightly enlarges the card on hover */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
         header {
             background-color: #2a3d66; /* Updated blue color */
             color: #fff;
@@ -208,23 +220,29 @@
         </nav>
 
   
-        <br>
-        <h1>MakersBnB</h1>
-        <br>
-        <h3>
-          <a href="/list_a_space">List a Space</a>
-        </h3>
-        <ul>
-          {% for space in spaces %}
-          <div>
-            <div class="signup-form-container">
-              <p>Space Name: {{space.space_name}}</p>
-              <p>Description: {{space.space_description}}</p>
+        <div class="container mt-4">
+            <h1 class="text-center mb-4">MakersBnB</h1>
+            <div class="text-center mb-3">
+              <a href="/list_a_space" class="btn btn-primary">List a Space</a>
+            </div>
+    
+            <div class="row">
+              {% for space in spaces %}
+                <div class="col-md-4 mb-4">
+                  <div class="card">
+                    <img src="path_to_image" class="card-img-top" alt="Space Image"> <!-- Optional: if you have images -->
+                    <div class="card-body">
+                      <h5 class="card-title">{{ space.space_name }}</h5>
+                      <p class="card-text">{{ space.space_description }}</p>
+                      <a href="/requests" class="btn btn-outline-success">Book</a>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+        </div>
 
-              <a href="/requests">Book</a>
-          </div>
-          {% endfor %}
-      </ul>
+
 
       <div class="footer">
             <div class="social-media">
