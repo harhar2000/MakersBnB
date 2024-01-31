@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>About MakersBnB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/style.css">
-    <style>
+    <style type="text/css">
         body {
             background-color: #f4f4f4;
             color: #333;
@@ -14,7 +14,31 @@
             margin: 0;
             padding: 0;
         }
-
+        .navbar-custom {
+            background-color: #2a3d66;
+            color: #fff;
+            margin: 0;
+            width: 100%;
+        }
+        .navbar-custom .navbar-brand svg {
+            height: 40px;
+            width: auto;
+        }
+        .navbar-custom .navbar-nav .nav-link, .navbar-custom .btn {
+            color: #fff;
+            
+        }
+        .navbar-custom .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 18px; /* Font size for the links */
+        }
+        .navbar-custom .navbar-nav .nav-link:hover, /* Hover effect for nav links */
+        .navbar-custom .btn:hover { /* Hover effect for buttons */
+            color: #d4af37; /* Change text color on hover */
+        }
+        .navbar-custom .btn {
+            background-color: #d4af37;
+        }
         a {
             color: #007bff;
             text-decoration: none;
@@ -31,12 +55,8 @@
             background-color: #2a3d66;
             color: #fff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px 0;
+            padding: 0px 0;
             text-align: center;
-        }
-        .center {
-            text-align: center;
-            margin-top: 50px;
         }
         .content-container {
             max-width: 950px; /* Adjust the width as needed */
@@ -63,6 +83,11 @@
         .navigation a:hover {
             color: #b3962f;
         }
+        
+        .navigation-link {
+            font-size: 180px; /* Increased font size */
+            /* Add other styling as needed */
+        }
         .center {
             text-align: center;
             margin-top: 50px;
@@ -87,7 +112,6 @@
             color: white;
             border-radius: 5px;
             border: none; /* Remove border for cleaner look */
-            transition: background-color 0.3s ease;
         }
         .button:hover {
             transform: scale(1.05);
@@ -135,32 +159,55 @@
             display: block;
             margin-top: 10px;
         }
-        .footer {
-            background-color: #2a3d66; /* Consistent with header */
-            color: #fff;
-            padding: 5px 0;
-            text-align: center;
-        }
         .social-media {
             margin: 5px 0;
+        }
+        .social-media a {
+            color: #fff;
+            margin-right: 20px;
+            transition: color 0.3s;
+            font-size: 19px; 
         }
         .social-icon {
             transition: all 0.3s ease;
             color: #fff;
-            margin: 0 10px;
+            margin: 0 1px;
             font-size: 20px; /* Larger icons */
         }
         .social-icon:hover {
             transform: scale(1.05);
         }
         .footer {
-            padding: 1px 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2a3d66;
+            color: #fff;
+            padding: 0px 0;
+            text-align: center;
+            z-index: 100;
+            transform: scale(1);
+            transition: all 0.3s ease;
+            font-size: 14px; /* Smaller font size */
+            line-height: 1.4;
+        }
+        .social-media a {
+        color: #fff; /* Set the default color to white */
+        margin-right: 20px;
+        transition: color 0.3s; /* Smooth transition for color change */
+        }
+        .navigation a:hover, 
+        .social-media a:hover {
+            color: #d4af37;
         }
     </style>
 </head>
 <body>
     <header>
 
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <a class="navbar-brand" href="/index">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="53.945" viewBox="0 0 260 53.945">
         <defs>
           <clipPath id="clip-path">
@@ -181,11 +228,23 @@
           </g>
         </g>
       </svg>
-      <nav class="navigation">
-        <a href="/index">Homepage</a>
-        <a href="/index/new" class="new-link">Sign Up</a>
-        <a href="/login">Login</a>
-      </nav>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mr-auto"></div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/index/about">About</a>
+            <a class="nav-item nav-link" href="/login">Login</a>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    </nav>
     </header>
 
     <div class="container center">
@@ -223,5 +282,10 @@
                 <a href="https://twitter.com/makersbnb" class="social-icon">Twitter</a>
             </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>

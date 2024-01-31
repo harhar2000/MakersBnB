@@ -1,169 +1,186 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>List a Space</title>
-    <link rel="stylesheet" href="/static/style.css">
-  </head>
+<head>
+  <title>List a Space</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <style type="text/css">
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      background-color: #f4f4f4;
+      color: #333333;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center content horizontally */
+    }
+    header {
+      background-color: #2a3d66;
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 0px 0;
+      text-align: left;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      margin-bottom: 20px
+    }
+    .content-wrapper {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: center; /* Center content vertically within .content-wrapper */
+      align-items: center; /* Center content horizontally within .content-wrapper */
+    }
+    .list-a-space-form-container {
+      background-color: white;
+      padding: 8px;
+      margin: 2px;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 100%;
+      text-align: left;
+      box-shadow: 0 0px 8px rgba(0, 0, 0, .09);
+      font-family: 'Arial', sans-serif; /* Change the font-family if desired */
+      font-size: 16px;
+    }
+    .list-a-space-form-container input[type="text"] {
+      width: 100%; /* Keep it full width */
+      max-width: 360px; /* Set a maximum width for the input fields */
+      padding: 10px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
 
-  <body>
-    <style type="text/css">
-          html, body {
-            height: 100%;
-            margin: 0;
-        }
-        body {
-            background-color: #f4f4f4;
-            color: #333333;
-            font-family: 'Roboto', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center content horizontally */
-        }
-        header {
-            background-color: #2a3d66; /* Updated blue color */
-            color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px 0;
-            text-align: center;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-        .content-wrapper {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            justify-content: center; /* Center content vertically within .content-wrapper */
-            align-items: center; /* Center content horizontally within .content-wrapper */
-        }
-        .space_info-form-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            margin: 20px;
-            text-align: left;
-        }
-        .space_info-form-container h2 {
-            color: #2a3d66;
-            text-align: center;
-        }
-        .space_info-form-container label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333333;
-        }
-        .space_info-form-container input[type="text"],
-        .space_info-form-container input[type="password"],
-        .space_info-form-container input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 5px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-        .space_info-form-container input[type="submit"] {
-            background-color: #2a3d66;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .space_info-form-container input[type="submit"]:hover {
-            background-color: #1d2a4a;
-        }
-        .navigation {
-            display: flex;
-            justify-content: flex-end; /* Align items to the end (right) */
-            margin-top: 40px;
-            padding-right: 40px; /* Adjust this padding to move the link to the left */
-            position: absolute; /* Absolute positioning */
-            top: 20px; /* Adjust as needed */
-            right: 40px;
-        }
-        .navigation a {
-            color: #d4af37;
-            margin-left: 20px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        .navigation .about-link {
-            margin-left: 15px; /* Or use padding */
-        }
-        .navigation a:hover {
-            color: #b3962f;
-        }
-        .header-nav {
-            display: flex;
-            justify-content: center; /* Center the links */
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-          }
-          .header-nav li {
-            display: inline;
-            margin-right: 20px;
-          }
-          .header-nav a {
-            color: #d4af37; /* Yellow links */
-            text-decoration: none;
-            font-weight: bold;
-          }
-          .header-nav a:hover {
-            color: #b3962f; /* Darker yellow on hover */
-          }
-        .footer {
-            position: fixed; /* Fix footer to the bottom */
-            bottom: 0; /* Align to the bottom */
-            left: 0; /* Align to the left */
-            width: 100%; /* Ensure it spans the full width of the viewport */
-            background-color: #2a3d66; /* Consistent with header */
-            color: #fff;
-            padding: 1px 0;
-            text-align: center;
-            z-index: 100; /* Ensure it stays on top of other content */
-            transform: scale(1.05);
-            transition: all 0.3s ease;
-            margin: 0 10px;
-        }
-        .social-media {
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-        .social-media a {
-            text-decoration: none;
-        }
-        .social-icon {
-            transition: all 0.3s ease;
-            color: #fff;
-            margin: 0 10px;
-            font-size: 20px; /* Larger icons */
-        }
-        .social-icon:hover {
-            transform: scale(1.05);
-            color: #0000FF; /* This will change the text color to blue on hover */
-        }
-        svg {
-          position: relative; /* Needed for z-index */
-          z-index: 2; 
-        }
-    </style>    
-
-        <header>
-          <div class="navigation">
-            <a href="/requests">Requests</a> 
-            <a href="/index/about">About</a> 
-            <a href="/login">Sign Out</a>
-          </div>
+    .list-a-space-form-container h2 {
+      color: #2a3d66;
+      text-align: center;
+    }
+    .list-a-space-form-container label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333333;
+    }
+    .list-a-space-form-container input[type="text"],
+    .list-a-space-form-container input[type="password"],
+    .list-a-space-form-container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    .list-a-space-form-container input[type="submit"] {
+      background-color: #2a3d66;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      padding: 12px 20px; /* Increase padding for button size */
+      border-radius: 5px; 
+    }
+    .list-a-space-form-container input[type="submit"]:hover {
+      background-color: #1d2a4a;
+    }
+    .navigation {
+      text-align: right;
+      margin-top: -40px;
+      padding-right: 10px;
+    }
+    .navigation a {
+      color: #d4af37;
+      margin-left: 20px;
+      font-weight: bold;
+      padding: 10px 15px;
+    }
+    .navigation .about-link {
+      margin-left: 15px; /* Or use padding */
+    }
+    .navigation a:hover {
+      color: #b3962f;
+    }
+    .header-nav {
+      display: flex;
+      justify-content: center; /* Center the links */
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .header-nav li {
+      display: inline;
+      margin-right: 20px;
+    }
+    .header-nav a:hover {
+      color: #b3962f; /* Darker yellow on hover */
+    }
+    .navbar-custom .navbar-brand svg {
+      height: 40px !important;
+      width: auto;
+    }
+    .navbar-custom .navbar-nav .nav-link, .navbar-custom .btn {
+      color: #fff;
+    }
+    .navbar-custom .navbar-nav .nav-link:hover,
+    .navbar-custom .btn:hover {
+      color: #d4af37;
+    }
+    .navbar-custom .btn {
+      background-color: #d4af37;
+    }
+    .social-media {
+      margin: 5px 0;
+    }
+    .social-icon {
+      transition: all 0.3s ease;
+      color: #fff;
+      margin: 0 10px;
+      font-size: 20px; /* Larger icons */
+    }
+    .social-icon:hover {
+      transform: scale(1.05);
+    }
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #2a3d66;
+      color: #fff;
+      padding: 0px 0;
+      text-align: center;
+      z-index: 100;
+      transform: scale(1);
+      transition: all 0.3s ease;
+      font-size: 14px; /* Smaller font size */
+      line-height: 1.4;
+    }
+    .social-media a {
+      color: #fff; /* Set the default color to white */
+      margin-right: 20px;
+      transition: color 0.3s; /* Smooth transition for color change */
+    }
+    .navigation a:hover, 
+    .social-media a:hover {
+      color: #d4af37;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <a class="navbar-brand" href="/index">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="53.945" viewBox="0 0 260 53.945">
-            <defs>
-              <clipPath id="clip-path">
-                <rect id="Rectangle_639" data-name="Rectangle 639" width="260" height="53.945" fill="none"/>
-              </clipPath>
-            </defs>
+          <defs>
+            <clipPath id="clip-path">
+              <rect id="Rectangle_639" data-name="Rectangle 639" width="260" height="53.945" fill="none"/>
+            </clipPath>
+          </defs>
             <g id="Group_2591" data-name="Group 2591" transform="translate(0 0.001)">
               <path id="Path_849" data-name="Path 849" d="M53.945,0,27.2,17.981,0,0V53.944H53.945Z"/>
               <path id="Path_850" data-name="Path 850" d="M256.435,72.462l7.165-36.6L275.285,62.32l12.1-26.456,6.438,36.6h-5.269l-3.285-20.548L275.2,74.027l-9.789-22.135-3.66,20.57Z" transform="translate(-177.241 -24.789)"/>
@@ -178,33 +195,40 @@
               </g>
             </g>
           </svg>
-        </header>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav mr-auto"></div>
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/index/about">About</a>
+            <a class="nav-item nav-link" href="/login">Login</a>
+          </div>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </header>
 
-
-          <h1>List a Space</h1>
+    <div class="list-a-space-form-container">
+          <h2>List a Space</h2>
       <form action="/list_a_space" method="POST">
-        <div class="space_info-form-container">
-          <p>
+        <div class="list-a-space-form-container">
             <label for="space_name">Space Name</label>
             <input type="text" name="space_name" id="space_name">
-          </p>
-          <p>
             <label for="space_description">Description</label>
             <input type="text" name="space_description" id="space_description">
-          </p>
-          <p>
             <label for="price">Price £££</label>
-            <input type="number" name="price" id="price">
-          </p>
+            <input type="number" name="price" id="price"> <br><br>
           <input type="submit" value="Create Space">
           <input type="submit" value="Upload Photo of Space">
         </div>
-      </form>
-
-
-      <p> 
-        <a href="/spaces">Back to list of spaces </a>
-      </p>
+        <br>
+        <p><a href="/spaces">Back to list of spaces </a></p>
+    </div>
 
       <footer class="footer">
         <div class="social-media">
