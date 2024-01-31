@@ -14,6 +14,14 @@
             margin: 0;
             padding: 0;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .body-content {
+            animation: fadeIn 0.5s ease-in;
+        }
         .navbar-custom {
             background-color: #2a3d66;
             color: #fff;
@@ -246,7 +254,7 @@
     </nav>
     </header>
 
-    <div class="container center">
+    <div class="container center body-content">
         <div class="content-container">
             <h1>About MakersBnB</h1>
             <p>Welcome to MakersBnB, the destination for travellers seeking unique stays and memorable experiences.</p>
