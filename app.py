@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, session, Response
 from flask_bootstrap import Bootstrap
 from lib.database_connection import get_flask_database_connection
 from lib.space_repository import SpaceRepository
@@ -10,16 +10,12 @@ from lib.login_validator import LoginValidator
 from lib.users_repository import *
 from lib.users import *
 
+import json
+import secrets
+
 # Create a new Flask app
 app = Flask(__name__)
 Bootstrap(app)
-
-# == Your Routes Here ==
-
-# GET /index
-# Returns the homepage
-# Try it:
-#   ; open http://localhost:5000/index
 
 """
 Routes for Users
@@ -41,22 +37,28 @@ def get_about():
 
 @app.route("/index/new", methods=["POST"])
 def create_user():
-    connection = get_flask_database_connection(app)
-    repository = UserRepository(connection)
 
-    user_name = request.form['user_name']
-    email = request.form['email']
-    password = request.form['user_password']
+    if 'token' in session:
+        response = {'token': session['token'], 'message': 'Already logged in'}
+        return Response(json.dumps(response), status=200, mimetyoe='application/json')
     
-    user = User(None, user_name, email, password)
+    else:
+        connection = get_flask_database_connection(app)
+        repository = UserRepository(connection)
 
-    if not user.is_valid():
-        errors = user.generate_errors()
-        return render_template("users/new.html", errors=errors)
+        user_name = request.form['user_name']
+        email = request.form['email']
+        password = request.form['user_password']
+        
+        user = User(None, user_name, email, password)
 
-    repository.create(user)
+        if not user.is_valid():
+            errors = user.generate_errors()
+            return render_template("users/new.html", errors=errors)
 
-    return redirect('/login')
+        repository.create(user)
+
+        return redirect('/login')
 
 """
 Routes for login
@@ -69,31 +71,46 @@ def get_login():
 
 @app.route("/login", methods=["POST"])
 def login_user():
-    connection = get_flask_database_connection(app)
-    repository = LoginRepository(connection)
-    validator = LoginValidator(
-        request.form['user_name'],
-        request.form['user_password']
-    )
-    if not validator.is_valid():
-        errors = validator.generate_errors()
-        return render_template("login/login.html", errors=errors)
-    login = LoginUser(
-        None,
-        validator.get_valid_user_name(),
-        validator.get_valid_user_password(),
-        1
-    )
-
-    id = ""
-    email = ""
-    user_name = request.form['user_name']
-    user_password = request.form['user_password']
-    result = repository.find(user_name, user_password)
-    if result is not None:
-        return redirect(f"/spaces") #change to space list
+    if 'token' in session:
+        response = {'token': session['token'], 'message': 'Already logged in'}
+        return Response(json.dumps(response), status=200, mimetyoe='application/json')
+    
     else:
-        return redirect(f"/login") #change to sing up page (return)
+        connection = get_flask_database_connection(app)
+        repository = LoginRepository(connection)
+        validator = LoginValidator(
+            request.form['user_name'],
+            request.form['user_password']
+        )
+        if not validator.is_valid():
+            errors = validator.generate_errors()
+            return render_template("login/login.html", errors=errors)
+        
+        user_name = request.form['user_name']
+        user_password = request.form['user_password']
+        result = repository.find(user_name, user_password)
+        print("result",result)
+
+        if result:
+            token = secrets.token_urlsafe(64)
+            session['token'] = token
+            print(session['token'])
+            login = LoginUser(
+                None,
+                validator.get_valid_user_name(),
+                validator.get_valid_user_password(),
+                result.id
+            )
+            return redirect(f"/spaces")
+        else:
+            return Response(response={}, status=400, mimetype='application/json')
+        
+@app.route('/logout',methods=['GET'])
+def get_logout():
+    session.pop('token', None)
+    print("session ended")
+    return redirect(f"/index")
+
 
 """
 Routes for spaces
@@ -134,8 +151,8 @@ def get_requests_page():
 
     return render_template('spaces/requests.html', spaces=spaces)
 
-# These lines start the server if you run this file directly
-# They also start the server configured to use the test database
-# if started in test mode.
+# start the server and set the secret key and session type
 if __name__ == '__main__':
+    app.secret_key = b'secretkey'
+    app.config['SESSION_TYPE'] = 'filesystem'
     app.run(debug=True, port=int(os.environ.get('PORT', 4845)))

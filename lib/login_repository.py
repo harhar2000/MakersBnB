@@ -5,8 +5,8 @@ class LoginRepository():
         self.connection = connection
 
 
-    def find(self, id, user_password):
-        rows = self.connection.execute('SELECT * FROM users WHERE user_name = %s AND user_password = %s',[id,user_password])
+    def find(self, user_name, user_password):
+        rows = self.connection.execute('SELECT * FROM users WHERE user_name = %s AND user_password = %s',[user_name,user_password])
         if len(rows) == 0:
             return None
         else:
