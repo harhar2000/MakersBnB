@@ -13,7 +13,6 @@ CREATE TABLE users(
 
 DROP TABLE spaces;
 
-
 -- Create the 'spaces' table
 CREATE TABLE spaces(
     id SERIAL PRIMARY KEY,
