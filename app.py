@@ -24,7 +24,7 @@ Bootstrap(app)
 """
 Routes for Users
 """
-@app.route('/index', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_index():
     return render_template('users/index.html')
 
