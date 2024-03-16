@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, redirect, session, Response
+from flask import Flask, request, render_template, redirect, session, Response, send_from_directory
 from flask_bootstrap import Bootstrap
 from lib.database_connection import get_flask_database_connection
 from lib.space_repository import SpaceRepository
@@ -150,6 +150,13 @@ def get_requests_page():
     spaces = repository.find_by_username(user)
 
     return render_template('spaces/requests.html', spaces=spaces)
+
+
+
+@app.route('/dist/<path:filename>')
+def serve_static(filename):
+    root_dir = os.path.dirname(os.getcwd())
+    return send_from_directory(os.path.join(root_dir, 'dist'), filename)
 
 # start the server and set the secret key and session type
 if __name__ == '__main__':
