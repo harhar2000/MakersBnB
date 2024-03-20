@@ -1,12 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'
+import { createRoot } from 'react-dom-client'
 
 const NavBar = () => {
+    const navigate = useNavigate()
 
-    console.log("Made it to navbar");
+    const handleClick = () => {
+        console.log('redirecting...')
+        navigate('/about')
+    }
+
+
 
     return (
         <nav className="navbar navbar-expand-lg navbar-custom">
-            <a className="navbar-brand" href="/index">
+            <a className="navbar-brand" onClick={handleClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="260" height="53.945" viewBox="0 0 260 53.945">
                     <defs>
                         <clipPath id="clip-path">
@@ -50,7 +58,9 @@ const NavBar = () => {
     );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('navbar'));
+
+const container = document.getElementById('navbar');
+const root = createRoot(container);
 root.render(<NavBar />);
 
 export default NavBar;

@@ -1,0 +1,191 @@
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+body.loaded {
+    opacity: 1;
+}
+body .navbar-custom .nav-link:hover, body .button:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.navbar-custom {
+    background-color: #2a3d66;
+    color: #fff;
+    margin: 0;
+    width: 100%;
+}
+.navbar-custom .navbar-brand svg {
+    height: 40px;
+    width: auto;
+}
+.navbar-custom .navbar-nav .nav-link, .navbar-custom .btn {
+    color: #fff;
+    
+}
+.navbar-custom .navbar-nav .nav-link {
+    color: #fff;
+    font-size: 18px; /* Font size for the links */
+}
+.navbar-custom .nav-link:hover, .button:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.navbar-custom .navbar-nav .nav-link:hover, /* Hover effect for nav links */
+.navbar-custom .btn:hover { /* Hover effect for buttons */
+    color: #d4af37; /* Change text color on hover */
+}
+.navbar-custom .btn {
+    background-color: #d4af37;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #2a3d66;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 0px 0;
+    text-align: center;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.navigation {
+    text-align: right;
+    margin-top: -40px;
+}
+
+.navigation a {
+    color: #d4af37;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.navigation a:hover {
+    color: #b3962f;
+}
+
+.center {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2a3d66;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #d4af37;
+    transition: background-color 0.3s ease;
+}
+.button:hover {
+    background-color: #1d2a4a;
+    color: #d4af37
+}
+.testimonials {
+    background-color: #ffffff; /* Light background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 700px; /* Adjust as necessary */
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif; /* Elegant font */
+}
+.testimonial-item {
+    background-color: #f9f9f9; /* Slightly different shade */
+    border: 1px solid #eaeaea;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 15px;
+}
+.testimonial-item p {
+    font-size: 16px; /* Readable font size */
+    color: #555; /* Softer color for text */
+}
+.testimonial-item strong {
+    font-size: 14px;
+    color: #333;
+    display: block; /* Or use inline-block */
+    margin-top: 10px;
+}
+.social-media {
+    margin: 5px 0;
+}
+.social-media a {
+    color: #fff;
+    margin-right: 20px;
+    transition: color 0.3s;
+    font-size: 19px; 
+}
+.social-icon {
+    transition: all 0.3s ease;
+    color: #fff;
+    margin: 0 1px;
+    font-size: 20px; /* Larger icons */
+}
+.social-icon:hover {
+    transform: scale(1.05);
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2a3d66;
+    color: #fff;
+    padding: 0px 0;
+    text-align: center;
+    z-index: 100;
+    transform: scale(1);
+    transition: all 0.3s ease;
+    font-size: 14px; /* Smaller font size */
+    line-height: 1.4;
+}
+.social-media a {
+color: #fff; /* Set the default color to white */
+margin-right: 20px;
+transition: color 0.3s; /* Smooth transition for color change */
+}
+.navigation a:hover, 
+.social-media a:hover {
+    color: #d4af37;
+}
