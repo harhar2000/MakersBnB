@@ -1,298 +1,413 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <title>About MakersBnB</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/style.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
     <style type="text/css">
-        body {
-            background-color: #f4f4f4;
-            color: #333;
-            font-family: 'Open Sans', sans-serif; /* More modern font */
-            font-size: 16px;
-            line-height: 1.8; /* Increased line height for readability */
-            margin: 0;
-            padding: 0;
+      body {
+        background-color: #f4f4f4;
+        color: #333;
+        font-family: "Open Sans", sans-serif; /* More modern font */
+        font-size: 16px;
+        line-height: 1.8; /* Increased line height for readability */
+        margin: 0;
+        padding: 0;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        to {
+          opacity: 1;
         }
+      }
 
-        .body-content {
-            animation: fadeIn 0.5s ease-in;
-        }
-        .navbar-custom {
-            background-color: #2a3d66;
-            color: #fff;
-            margin: 0;
-            width: 100%;
-        }
-        .navbar-custom .navbar-brand svg {
-            height: 40px;
-            width: auto;
-        }
-        .navbar-custom .navbar-nav .nav-link, .navbar-custom .btn {
-            color: #fff;
-            
-        }
-        .navbar-custom .navbar-nav .nav-link {
-            color: #fff;
-            font-size: 18px; /* Font size for the links */
-        }
-        .navbar-custom .navbar-nav .nav-link:hover, /* Hover effect for nav links */
-        .navbar-custom .btn:hover { /* Hover effect for buttons */
-            color: #d4af37; /* Change text color on hover */
-        }
-        .navbar-custom .btn {
-            background-color: #d4af37;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
+      .body-content {
+        animation: fadeIn 0.5s ease-in;
+      }
+      .navbar-custom {
+        background-color: #2a3d66;
+        color: #fff;
+        margin: 0;
+        width: 100%;
+      }
+      .navbar-custom .navbar-brand svg {
+        height: 40px;
+        width: auto;
+      }
+      .navbar-custom .navbar-nav .nav-link,
+      .navbar-custom .btn {
+        color: #fff;
+      }
+      .navbar-custom .navbar-nav .nav-link {
+        color: #fff;
+        font-size: 18px; /* Font size for the links */
+      }
+      .navbar-custom .navbar-nav .nav-link:hover, /* Hover effect for nav links */
+        .navbar-custom .btn:hover {
+        /* Hover effect for buttons */
+        color: #d4af37; /* Change text color on hover */
+      }
+      .navbar-custom .btn {
+        background-color: #d4af37;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
 
-        a:hover {
-            color: #0056b3;
-        }
+      a:hover {
+        color: #0056b3;
+      }
 
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #2a3d66;
-            color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 0px 0;
-            text-align: center;
-        }
-        .content-container {
-            max-width: 950px; /* Adjust the width as needed */
-            margin: -2px auto;
-            text-align: left; /* Left align the text within the container */
-        }
-        .container {
-            max-width: 1200px; /* Larger width for better layout */
-            margin: auto;
-            padding: 0 20px; /* Padding for content */
-            overflow: hidden;
-        }
-        .navigation {
-            text-align: right;
-            margin-top: -40px;
-            padding-right: 10px;
-        }
-        .navigation a {
-            color: #d4af37;
-            margin-left: 20px;
-            font-weight: bold;
-            padding: 10px 15px;
-        }
-        .navigation a:hover {
-            color: #b3962f;
-        }
-        
-        .navigation-link {
-            font-size: 180px; /* Increased font size */
-            /* Add other styling as needed */
-        }
-        .center {
-            text-align: center;
-            margin-top: 50px;
-        }
-        h1 {
-            font-size: 3em;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 20px;
-            color: #2a3d66; /* Match the primary color scheme */
-        }
-        h2 {
-            font-size: 1.75em; /* Slightly larger for emphasis */
-            font-family: 'Montserrat', sans-serif;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        .button {
-            transition: all 0.3s ease;
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #2a3d66;
-            color: white;
-            border-radius: 5px;
-            border: none; /* Remove border for cleaner look */
-        }
-        .button:hover {
-            transform: scale(1.05);
-            background-color: #1d2a4a;
-        }
-        .testimonials {
-            background-color: #ffffff;
-            padding: 10px; /* More padding for space */
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 750px; /* Larger for better layout */
-            margin: 20px auto;
-            font-family: 'Arial', sans-serif;
-        }
-        .testimonials-grid {
-            display: flex; /* Enables flexbox layout */
-            justify-content: space-around; /* Spaces out the child elements evenly */
-            align-items: stretch; /* Aligns items vertically */
-            flex-wrap: wrap; /* Allows items to wrap into the next line on smaller screens */
-        }
-        .testimonial-item {
-            background-color: #f9f9f9;
-            border: 1px solid #eaeaea;
-            padding: 10px; /* More padding for space */
-            margin: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            flex: 1 1 45%; /* Adjusts flex-grow, flex-shrink, and flex-basis */
-            min-width: 280px; /* Minimum width for each testimonial */
-            max-width: 45%; /* Maximum width for each testimonial */
-            box-sizing: border-box;
-        }
-        .testimonial-item p {
-            font-size: 16px; /* Larger font size for readability */
-            color: #555;
-        }
-        .testimonial-item img {
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-        .testimonial-item strong {
-            font-size: 15px; /* Slightly larger for emphasis */
-            color: #333;
-            display: block;
-            margin-top: 10px;
-        }
-        .social-media {
-            margin: 5px 0;
-        }
-        .social-media a {
-            color: #fff;
-            margin-right: 20px;
-            transition: color 0.3s;
-            font-size: 19px; 
-        }
-        .social-icon {
-            transition: all 0.3s ease;
-            color: #fff;
-            margin: 0 1px;
-            font-size: 20px; /* Larger icons */
-        }
-        .social-icon:hover {
-            transform: scale(1.05);
-        }
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #2a3d66;
-            color: #fff;
-            padding: 0px 0;
-            text-align: center;
-            z-index: 100;
-            transform: scale(1);
-            transition: all 0.3s ease;
-            font-size: 14px; /* Smaller font size */
-            line-height: 1.4;
-        }
-        .social-media a {
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: #2a3d66;
+        color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 0px 0;
+        text-align: center;
+      }
+      .content-container {
+        max-width: 950px; /* Adjust the width as needed */
+        margin: -2px auto;
+        text-align: left; /* Left align the text within the container */
+      }
+      .container {
+        max-width: 1200px; /* Larger width for better layout */
+        margin: auto;
+        padding: 0 20px; /* Padding for content */
+        overflow: hidden;
+      }
+      .navigation {
+        text-align: right;
+        margin-top: -40px;
+        padding-right: 10px;
+      }
+      .navigation a {
+        color: #d4af37;
+        margin-left: 20px;
+        font-weight: bold;
+        padding: 10px 15px;
+      }
+      .navigation a:hover {
+        color: #b3962f;
+      }
+
+      .navigation-link {
+        font-size: 180px; /* Increased font size */
+        /* Add other styling as needed */
+      }
+      .center {
+        text-align: center;
+        margin-top: 50px;
+      }
+      h1 {
+        font-size: 3em;
+        font-family: "Montserrat", sans-serif;
+        margin-bottom: 20px;
+        color: #2a3d66; /* Match the primary color scheme */
+      }
+      h2 {
+        font-size: 1.75em; /* Slightly larger for emphasis */
+        font-family: "Montserrat", sans-serif;
+        color: #666;
+        margin-bottom: 30px;
+      }
+      .button {
+        transition: all 0.3s ease;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #2a3d66;
+        color: white;
+        border-radius: 5px;
+        border: none; /* Remove border for cleaner look */
+      }
+      .button:hover {
+        transform: scale(1.05);
+        background-color: #1d2a4a;
+      }
+      .testimonials {
+        background-color: #ffffff;
+        padding: 10px; /* More padding for space */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 750px; /* Larger for better layout */
+        margin: 20px auto;
+        font-family: "Arial", sans-serif;
+      }
+      .testimonials-grid {
+        display: flex; /* Enables flexbox layout */
+        justify-content: space-around; /* Spaces out the child elements evenly */
+        align-items: stretch; /* Aligns items vertically */
+        flex-wrap: wrap; /* Allows items to wrap into the next line on smaller screens */
+      }
+      .testimonial-item {
+        background-color: #f9f9f9;
+        border: 1px solid #eaeaea;
+        padding: 10px; /* More padding for space */
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        flex: 1 1 45%; /* Adjusts flex-grow, flex-shrink, and flex-basis */
+        min-width: 280px; /* Minimum width for each testimonial */
+        max-width: 45%; /* Maximum width for each testimonial */
+        box-sizing: border-box;
+      }
+      .testimonial-item p {
+        font-size: 16px; /* Larger font size for readability */
+        color: #555;
+      }
+      .testimonial-item img {
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+      .testimonial-item strong {
+        font-size: 15px; /* Slightly larger for emphasis */
+        color: #333;
+        display: block;
+        margin-top: 10px;
+      }
+      .social-media {
+        margin: 5px 0;
+      }
+      .social-media a {
+        color: #fff;
+        margin-right: 20px;
+        transition: color 0.3s;
+        font-size: 19px;
+      }
+      .social-icon {
+        transition: all 0.3s ease;
+        color: #fff;
+        margin: 0 1px;
+        font-size: 20px; /* Larger icons */
+      }
+      .social-icon:hover {
+        transform: scale(1.05);
+      }
+      .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #2a3d66;
+        color: #fff;
+        padding: 0px 0;
+        text-align: center;
+        z-index: 100;
+        transform: scale(1);
+        transition: all 0.3s ease;
+        font-size: 14px; /* Smaller font size */
+        line-height: 1.4;
+      }
+      .social-media a {
         color: #fff; /* Set the default color to white */
         margin-right: 20px;
         transition: color 0.3s; /* Smooth transition for color change */
-        }
-        .navigation a:hover, 
-        .social-media a:hover {
-            color: #d4af37;
-        }
+      }
+      .navigation a:hover,
+      .social-media a:hover {
+        color: #d4af37;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-
-    <nav class="navbar navbar-expand-lg navbar-custom">
+      <nav class="navbar navbar-expand-lg navbar-custom">
         <a class="navbar-brand" href="/index">
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="53.945" viewBox="0 0 260 53.945">
-        <defs>
-          <clipPath id="clip-path">
-            <rect id="Rectangle_639" data-name="Rectangle 639" width="260" height="53.945" fill="none"/>
-          </clipPath>
-        </defs>
-        <g id="Group_2591" data-name="Group 2591" transform="translate(0 0.001)">
-          <path id="Path_849" data-name="Path 849" d="M53.945,0,27.2,17.981,0,0V53.944H53.945Z"/>
-          <path id="Path_850" data-name="Path 850" d="M256.435,72.462l7.165-36.6L275.285,62.32l12.1-26.456,6.438,36.6h-5.269l-3.285-20.548L275.2,74.027l-9.789-22.135-3.66,20.57Z" transform="translate(-177.241 -24.789)"/>
-          <path id="Path_851" data-name="Path 851" d="M412.116,65.131H397.543L393.751,73.4h-5.534L405.061,37.22,421.309,73.4h-5.622ZM410.021,60.3l-5.048-11.574L399.681,60.3Z" transform="translate(-268.325 -25.726)"/>
-          <path id="Path_852" data-name="Path 852" d="M514.285,57.726l13.25-13.581h6.857L519,59.556,534.48,78.185H527.6L515.344,63.039,514.285,64.1V78.185h-5.137V44.145h5.137Z" transform="translate(-351.909 -30.512)"/>
-          <path id="Path_853" data-name="Path 853" d="M624.806,48.973H611.159v8.179h13.25v4.828h-13.25V73.357h13.647v4.828H606.022V44.145h18.784Z" transform="translate(-418.865 -30.512)"/>
-          <g id="Group_2560" data-name="Group 2560" transform="translate(0 0)">
-            <g id="Group_2559" data-name="Group 2559" clip-path="url(#clip-path)">
-              <path id="Path_854" data-name="Path 854" d="M700.221,63.678,710.76,78.185h-6.284l-9.723-13.934h-.926V78.185h-5.136V44.145h6.018q6.747,0,9.745,2.535a9.315,9.315,0,0,1,3.307,7.452,9.673,9.673,0,0,1-2.072,6.217,9.239,9.239,0,0,1-5.468,3.329m-6.394-3.9h1.632q7.3,0,7.3-5.578,0-5.225-7.1-5.225h-1.83Z" transform="translate(-476.003 -30.512)"/>
-              <path id="Path_855" data-name="Path 855" d="M792.159,47.736l-4.167,2.469a7.165,7.165,0,0,0-2.227-2.646,5.2,5.2,0,0,0-2.844-.705,5.253,5.253,0,0,0-3.55,1.212,3.758,3.758,0,0,0-1.411,3q0,2.492,3.7,4.013l3.4,1.389a14.493,14.493,0,0,1,6.063,4.09,9.217,9.217,0,0,1,1.918,5.92,10.4,10.4,0,0,1-3.131,7.76,10.743,10.743,0,0,1-7.826,3.087,10.469,10.469,0,0,1-7.319-2.624,12.08,12.08,0,0,1-3.55-7.386l5.2-1.146a8.846,8.846,0,0,0,1.235,4.145,5.867,5.867,0,0,0,8.621.6,5.567,5.567,0,0,0,1.587-4.078,5.723,5.723,0,0,0-.276-1.819,4.605,4.605,0,0,0-.86-1.521,6.873,6.873,0,0,0-1.51-1.3,14.584,14.584,0,0,0-2.2-1.158l-3.285-1.367q-6.989-2.954-6.989-8.643a8.2,8.2,0,0,1,2.932-6.415,10.593,10.593,0,0,1,7.3-2.6q5.887,0,9.194,5.732" transform="translate(-533.041 -29.032)"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="260"
+            height="53.945"
+            viewBox="0 0 260 53.945"
+          >
+            <defs>
+              <clipPath id="clip-path">
+                <rect
+                  id="Rectangle_639"
+                  data-name="Rectangle 639"
+                  width="260"
+                  height="53.945"
+                  fill="none"
+                />
+              </clipPath>
+            </defs>
+            <g
+              id="Group_2591"
+              data-name="Group 2591"
+              transform="translate(0 0.001)"
+            >
+              <path
+                id="Path_849"
+                data-name="Path 849"
+                d="M53.945,0,27.2,17.981,0,0V53.944H53.945Z"
+              />
+              <path
+                id="Path_850"
+                data-name="Path 850"
+                d="M256.435,72.462l7.165-36.6L275.285,62.32l12.1-26.456,6.438,36.6h-5.269l-3.285-20.548L275.2,74.027l-9.789-22.135-3.66,20.57Z"
+                transform="translate(-177.241 -24.789)"
+              />
+              <path
+                id="Path_851"
+                data-name="Path 851"
+                d="M412.116,65.131H397.543L393.751,73.4h-5.534L405.061,37.22,421.309,73.4h-5.622ZM410.021,60.3l-5.048-11.574L399.681,60.3Z"
+                transform="translate(-268.325 -25.726)"
+              />
+              <path
+                id="Path_852"
+                data-name="Path 852"
+                d="M514.285,57.726l13.25-13.581h6.857L519,59.556,534.48,78.185H527.6L515.344,63.039,514.285,64.1V78.185h-5.137V44.145h5.137Z"
+                transform="translate(-351.909 -30.512)"
+              />
+              <path
+                id="Path_853"
+                data-name="Path 853"
+                d="M624.806,48.973H611.159v8.179h13.25v4.828h-13.25V73.357h13.647v4.828H606.022V44.145h18.784Z"
+                transform="translate(-418.865 -30.512)"
+              />
+              <g
+                id="Group_2560"
+                data-name="Group 2560"
+                transform="translate(0 0)"
+              >
+                <g
+                  id="Group_2559"
+                  data-name="Group 2559"
+                  clip-path="url(#clip-path)"
+                >
+                  <path
+                    id="Path_854"
+                    data-name="Path 854"
+                    d="M700.221,63.678,710.76,78.185h-6.284l-9.723-13.934h-.926V78.185h-5.136V44.145h6.018q6.747,0,9.745,2.535a9.315,9.315,0,0,1,3.307,7.452,9.673,9.673,0,0,1-2.072,6.217,9.239,9.239,0,0,1-5.468,3.329m-6.394-3.9h1.632q7.3,0,7.3-5.578,0-5.225-7.1-5.225h-1.83Z"
+                    transform="translate(-476.003 -30.512)"
+                  />
+                  <path
+                    id="Path_855"
+                    data-name="Path 855"
+                    d="M792.159,47.736l-4.167,2.469a7.165,7.165,0,0,0-2.227-2.646,5.2,5.2,0,0,0-2.844-.705,5.253,5.253,0,0,0-3.55,1.212,3.758,3.758,0,0,0-1.411,3q0,2.492,3.7,4.013l3.4,1.389a14.493,14.493,0,0,1,6.063,4.09,9.217,9.217,0,0,1,1.918,5.92,10.4,10.4,0,0,1-3.131,7.76,10.743,10.743,0,0,1-7.826,3.087,10.469,10.469,0,0,1-7.319-2.624,12.08,12.08,0,0,1-3.55-7.386l5.2-1.146a8.846,8.846,0,0,0,1.235,4.145,5.867,5.867,0,0,0,8.621.6,5.567,5.567,0,0,0,1.587-4.078,5.723,5.723,0,0,0-.276-1.819,4.605,4.605,0,0,0-.86-1.521,6.873,6.873,0,0,0-1.51-1.3,14.584,14.584,0,0,0-2.2-1.158l-3.285-1.367q-6.989-2.954-6.989-8.643a8.2,8.2,0,0,1,2.932-6.415,10.593,10.593,0,0,1,7.3-2.6q5.887,0,9.194,5.732"
+                    transform="translate(-533.041 -29.032)"
+                  />
+                </g>
+              </g>
             </g>
-          </g>
-        </g>
-      </svg>
-      </a>
-      
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav mr-auto"></div>
-        <div class="navbar-nav">
+          </svg>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav mr-auto"></div>
+          <div class="navbar-nav">
             <a class="nav-item nav-link" href="/index/about">About</a>
             <a class="nav-item nav-link" href="/login">Login</a>
+          </div>
+          <form class="form-inline my-2 my-lg-0">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
         </div>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-    </nav>
+      </nav>
     </header>
 
     <div class="container center body-content">
-        <div class="content-container">
-            <h1>About MakersBnB</h1>
-            <p>Welcome to MakersBnB, the destination for travellers seeking unique stays and memorable experiences.</p>
-            <p>At MakersBnB, we believe every journey is as individual as you. That’s why along with our high grade website, we curated a diverse collection of properties, each with its own character and charm.</p>
-            <h2>How It Works:</h2>
-            <ol>
-                <li><strong>Sign Up & Log In:</strong> Creating an account. Our straightforward sign-up process ensures you’re on your way to discovering your next stay.</li>
-                <li><strong>Discover Unique Properties:</strong> Browse through our extensive list of spaces, where you’ll find detailed descriptions, authentic photographs, and transparent pricing.</li>
-                <li><strong>Making Requests:</strong> Once you’ve found your perfect space, head over to the requests page. Here, you can manage your stays.</li>
-                <li><strong>Listing Spaces:</strong> List your space with us and join our community of hosts.</li>
-                <li><strong>Manage Your Requests:</strong> As a host, go to the requests page to see who’s interested in staying at your space. Approve requests here.</li>
-            </ol>
-        </div>
+      <div class="content-container">
+        <h1>About MakersBnB</h1>
+        <p>
+          Welcome to MakersBnB, the destination for travellers seeking unique
+          stays and memorable experiences.
+        </p>
+        <p>
+          At MakersBnB, we believe every journey is as individual as you. That’s
+          why along with our high grade website, we curated a diverse collection
+          of properties, each with its own character and charm.
+        </p>
+        <h2>How It Works:</h2>
+        <ol>
+          <li>
+            <strong>Sign Up & Log In:</strong> Creating an account. Our
+            straightforward sign-up process ensures you’re on your way to
+            discovering your next stay.
+          </li>
+          <li>
+            <strong>Discover Unique Properties:</strong> Browse through our
+            extensive list of spaces, where you’ll find detailed descriptions,
+            authentic photographs, and transparent pricing.
+          </li>
+          <li>
+            <strong>Making Requests:</strong> Once you’ve found your perfect
+            space, head over to the requests page. Here, you can manage your
+            stays.
+          </li>
+          <li>
+            <strong>Listing Spaces:</strong> List your space with us and join
+            our community of hosts.
+          </li>
+          <li>
+            <strong>Manage Your Requests:</strong> As a host, go to the requests
+            page to see who’s interested in staying at your space. Approve
+            requests here.
+          </li>
+        </ol>
+      </div>
     </div>
 
     <div class="testimonials">
-        <div class="container testimonials-grid">
-            <div class="testimonial-item">
-                <p>"If I had a nickel for every time I thought about going back, I’d have enough to book another week at this charming place. Counting my nickels now..."</p>
-                <strong>- Taylor R.</strong>
-            </div>
-            <div class="testimonial-item">
-                <p>"The beds were so comfortable, I considered swapping my cloud-based software for an actual cloud from the mattress. Dreamy doesn't even start to cover it!"</p>
-                <strong>- Alex G.</strong>
-            </div>
+      <div class="container testimonials-grid">
+        <div class="testimonial-item">
+          <p>
+            "If I had a nickel for every time I thought about going back, I’d
+            have enough to book another week at this charming place. Counting my
+            nickels now..."
+          </p>
+          <strong>- Taylor R.</strong>
         </div>
+        <div class="testimonial-item">
+          <p>
+            "The beds were so comfortable, I considered swapping my cloud-based
+            software for an actual cloud from the mattress. Dreamy doesn't even
+            start to cover it!"
+          </p>
+          <strong>- Alex G.</strong>
+        </div>
+      </div>
     </div>
 
     <div class="footer">
-            <div class="social-media">
-                <a href="https://facebook.com/makersbnb" class="social-icon">Facebook</a>
-                <a href="https://twitter.com/makersbnb" class="social-icon">Twitter</a>
-            </div>
+      <div class="social-media">
+        <a href="https://facebook.com/makersbnb" class="social-icon"
+          >Facebook</a
+        >
+        <a href="https://twitter.com/makersbnb" class="social-icon">Twitter</a>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-</body>
+  </body>
 </html>
