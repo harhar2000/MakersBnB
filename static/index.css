@@ -12,11 +12,7 @@ body {
 body.loaded {
   opacity: 1;
 }
-body .navbar-custom .nav-link:hover,
-body .button:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
-}
+
 
 a {
   color: #007bff;
@@ -119,45 +115,4 @@ h2 {
   display: block; /* Or use inline-block */
   margin-top: 10px;
 }
-.social-media {
-  margin: 5px 0;
-}
-.social-media a {
-  color: #fff;
-  margin-right: 20px;
-  transition: color 0.3s;
-  font-size: 19px;
-}
-.social-icon {
-  transition: all 0.3s ease;
-  color: #fff;
-  margin: 0 1px;
-  font-size: 20px; /* Larger icons */
-}
-.social-icon:hover {
-  transform: scale(1.05);
-}
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #2a3d66;
-  color: #fff;
-  padding: 0px 0;
-  text-align: center;
-  z-index: 100;
-  transform: scale(1);
-  transition: all 0.3s ease;
-  font-size: 14px; /* Smaller font size */
-  line-height: 1.4;
-}
-.social-media a {
-  color: #fff; /* Set the default color to white */
-  margin-right: 20px;
-  transition: color 0.3s; /* Smooth transition for color change */
-}
-.navigation a:hover,
-.social-media a:hover {
-  color: #d4af37;
-}
+
