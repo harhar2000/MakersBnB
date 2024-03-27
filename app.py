@@ -20,12 +20,12 @@ Bootstrap(app)
 """
 Routes for Users
 """
-@app.route('/index', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_index():
     return render_template('users/index.html')
 
 
-@app.route("/index/new")
+@app.route("/signUp")
 def get_sign_up_page():
     return render_template("users/new.html")
 
@@ -35,7 +35,7 @@ def get_about():
     return render_template('users/about.html')
 
 
-@app.route("/index/new", methods=["POST"])
+@app.route("/signUp", methods=["POST"])
 def create_user():
 
     if 'token' in session:
