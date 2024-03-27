@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="/static/style.css" />
-    <link rel="stylesheet" href="/static/requests.css" type="tex/css">
-      </head>
-    <body>
-  
-      {% include 'navbar/navbar.html' %}
+    <link rel="stylesheet" href="/static/requests.css" type="tex/css" />
+  </head>
+  <body>
+    {% include 'navbar/navbar.html' %}
 
-
-    
     <div class="title-container">
-        <br><br>
-        <h1 class="page-title">Requests</h1>
-        </div>
-        <br>
-        <br>
-        <form action="/requests" method="POST">
-          <div class="signup-form-container">
-            <p>
-              <label for="user_name">Username</label>
-              <input type="text" name="user_name" id="user_name">
-          </p>
-            <p>
-                <input type="submit" value="Submit">
-            </p>
-        </form>
-        </div>
+      <br /><br />
+      <h1 class="page-title">Requests</h1>
+    </div>
+    <br />
+    <br />
+    <form action="/requests" method="POST">
+      <div class="signup-form-container">
+        <p>
+          <label for="user_name">Username</label>
+          <input type="text" name="user_name" id="user_name" />
+        </p>
+        <p>
+          <input type="submit" value="Submit" />
+        </p>
+      </div>
+    </form>
 
-        <div class="container mt-4"> <!-- Added container and margin-top -->
-            <div class="row"> <!-- Start of the row -->
-                {% for space in spaces %}
-                <div class="col-md-4 mb-4"> <!-- Column definition and margin-bottom -->
-                    <div class="card">
-                        <img src="path_to_image" alt="Space Image" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ space.space_name }}</h5>
-                            <p class="card-text">{{ space.space_description }}</p>
-                            <p class="card-price">Price: {{ space.price }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+    <div class="container mt-4">
+      <!-- Added container and margin-top -->
+      <div class="row">
+        <!-- Start of the row -->
+        {% for space in spaces %}
+        <div class="col-md-4 mb-4">
+          <!-- Column definition and margin-bottom -->
+          <div class="card">
+            <img src="path_to_image" alt="Space Image" class="card-img-top" />
+            <div class="card-body">
+              <h5 class="card-title">{{ space.space_name }}</h5>
+              <p class="card-text">{{ space.space_description }}</p>
+              <p class="card-price">Price: {{ space.price }}</p>
             </div>
+          </div>
         </div>
-        {% include 'footer/footer.html' %}
+        {% endfor %}
+      </div>
+    </div>
+    {% include 'footer/footer.html' %}
 
-          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-          
-     </body>
-    </html>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

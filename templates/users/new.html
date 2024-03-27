@@ -1,189 +1,196 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>MakersBnB</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/style.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
     <style type="text/css">
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            box-sizing: border-box;
-        }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        box-sizing: border-box;
+      }
 
-        body {
-            background-color: #f4f4f4;
-            color: #333333;
-            font-family: 'Roboto', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+      body {
+        background-color: #f4f4f4;
+        color: #333333;
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
+      .signup-form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        margin: 10px;
+        text-align: left;
+      }
 
-        .signup-form-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            margin: 10px;
-            text-align: left;
-        }
+      .signup-form-container h2 {
+        color: #2a3d66;
+        text-align: center;
+      }
 
-        .signup-form-container h2 {
-            color: #2a3d66;
-            text-align: center;
-        }
+      .signup-form-container label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333333;
+      }
 
-        .signup-form-container label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333333;
-        }
+      .signup-form-container input[type="text"],
+      .signup-form-container input[type="password"],
+      .signup-form-container input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 1px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
 
-        .signup-form-container input[type="text"],
-        .signup-form-container input[type="password"],
-        .signup-form-container input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 1px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
+      .signup-form-container input[type="submit"] {
+        background-color: #2a3d66;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
 
-        .signup-form-container input[type="submit"] {
-            background-color: #2a3d66;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+      .signup-form-container input[type="submit"]:hover {
+        background-color: #1d2a4a;
+      }
 
-        .signup-form-container input[type="submit"]:hover {
-            background-color: #1d2a4a;
-        }
+      .navbar-custom .nav-link:hover,
+      .button:hover,
+      input[type="submit"]:hover {
+        transform: scale(1.05);
+        color: #d4af37;
+        transition: transform 0.3s ease;
+      }
 
-        .navbar-custom .nav-link:hover,
-        .button:hover,
-        input[type="submit"]:hover {
-            transform: scale(1.05);
-            color: #d4af37;
-            transition: transform 0.3s ease;
-        }
+      .testimonials {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 20px auto;
+        font-family: "Arial", sans-serif;
+      }
 
-        .testimonials {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
-            margin: 20px auto;
-            font-family: 'Arial', sans-serif;
-        }
+      .testimonial-item {
+        background-color: #f9f9f9;
+        border: 1px solid #eaeaea;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
 
-        .testimonial-item {
-            background-color: #f9f9f9;
-            border: 1px solid #eaeaea;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 15px;
+      }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            grid-gap: 15px;
-        }
+      .testimonial-item p {
+        font-size: 16px;
+        color: #555;
+      }
 
-        .testimonial-item p {
-            font-size: 16px;
-            color: #555;
-        }
+      .testimonial-item strong {
+        font-size: 14px;
+        color: #333;
+        display: block;
+        margin-top: 10px;
+      }
 
-        .testimonial-item strong {
-            font-size: 14px;
-            color: #333;
-            display: block;
-            margin-top: 10px;
-        }
+      .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #2a3d66;
+        color: #fff;
+        padding: 5px 0;
+        text-align: center;
+        z-index: 100;
+        transform: scale(1.05);
+        transition: all;
+      }
 
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #2a3d66;
-            color: #fff;
-            padding: 5px 0;
-            text-align: center;
-            z-index: 100;
-            transform: scale(1.05);
-            transition: all
-        }
+      .social-media a {
+        color: #fff;
+        /* Set the default color to white */
+        margin-right: 20px;
+        transition: color 0.3s;
+        /* Smooth transition for color change */
+      }
 
-        .social-media a {
-            color: #fff;
-            /* Set the default color to white */
-            margin-right: 20px;
-            transition: color 0.3s;
-            /* Smooth transition for color change */
-        }
-
-        .navigation a:hover,
-        .social-media a:hover {
-            color: #d4af37;
-        }
+      .navigation a:hover,
+      .social-media a:hover {
+        color: #d4af37;
+      }
     </style>
-</head>
+  </head>
 
-<body style="display: flex; flex-direction: column; min-height: 100vh;">
+  <body style="display: flex; flex-direction: column; min-height: 100vh">
     {% include 'navbar/navbar.html' %}
     <div class="signup-form-container">
-        <h2>Sign up to MakersBnB!</h2>
-        <form action="/index/new" method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="user_name" name="user_name"><br>
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email"><br>
-            <label for="password">Password:</label>
-            <input type="password" id="user_password" name="user_password"><br><br>
-            <input type="submit" value="Submit" class="button">
-
-        </form>
-        <br>
-        <p><a href="/index">Back to Homepage!</a></p>
+      <h2>Sign up to MakersBnB!</h2>
+      <form action="/index/new" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="user_name" name="user_name" /><br />
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" /><br />
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="user_password"
+          name="user_password"
+        /><br /><br />
+        <input type="submit" value="Submit" class="button" />
+      </form>
+      <br />
+      <p><a href="/index">Back to Homepage!</a></p>
     </div>
-
 
     <!-- Testimonials Section -->
     <div class="testimonials">
-        <div class="container testimonials-grid">
-            <div class="testimonial-item">
-                <p>"Stayed here for a week and discovered the meaning of life... or maybe it was just the fantastic
-                    coffee provided. Either way, 10/10 would stay again."</p>
-                <strong>- Sam T.</strong>
-            </div>
-            <div class="testimonial-item">
-                <p>"Perfect location! I could see the city skyline if I hung out the window and squinted. Absolutely
-                    breathtaking (the view and the hanging part)."</p>
-                <strong>- Jamie L.</strong>
-            </div>
+      <div class="container testimonials-grid">
+        <div class="testimonial-item">
+          <p>
+            "Stayed here for a week and discovered the meaning of life... or
+            maybe it was just the fantastic coffee provided. Either way, 10/10
+            would stay again."
+          </p>
+          <strong>- Sam T.</strong>
         </div>
+        <div class="testimonial-item">
+          <p>
+            "Perfect location! I could see the city skyline if I hung out the
+            window and squinted. Absolutely breathtaking (the view and the
+            hanging part)."
+          </p>
+          <strong>- Jamie L.</strong>
+        </div>
+      </div>
     </div>
 
-{% include 'footer/footer.html' %}
+    {% include 'footer/footer.html' %}
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-</body>
-
+  </body>
 </html>

@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>List a Space</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <head>
+    <title>List a Space</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="/static/style.css" />
-    <link rel="stylesheet" href="../../static/list_a_space.css" type="text/css">
-  
-</head>
-<body>
-  {% include 'navbar/navbar.html' %}
+    <link
+      rel="stylesheet"
+      href="../../static/list_a_space.css"
+      type="text/css"
+    />
+  </head>
+  <body>
+    {% include 'navbar/navbar.html' %}
 
-<br><br>
+    <br /><br />
     <div class="list-a-space-form-container">
-          <h2>List a Space</h2>
+      <h2>List a Space</h2>
       <form action="/list_a_space" method="POST">
         <div class="list-a-space-form-container">
-            <label for="space_name">Space Name</label>
-            <input type="text" name="space_name" id="space_name">
-            <label for="space_description">Description</label>
-            <input type="text" name="space_description" id="space_description">
-            <label for="price">Price £££</label>
-            <input type="number" name="price" id="price"> <br><br>
-          <input type="submit" value="Create Space">
-          <input type="submit" value="Upload Photo of Space">
+          <label for="space_name">Space Name</label>
+          <input type="text" name="space_name" id="space_name" />
+          <label for="space_description">Description</label>
+          <input type="text" name="space_description" id="space_description" />
+          <label for="price">Price £££</label>
+          <input type="number" name="price" id="price" /> <br /><br />
+          <input type="submit" value="Create Space" />
+          <input type="submit" value="Upload Photo of Space" />
         </div>
-        <br>
+        <br />
         <p><a href="/spaces">Back to list of spaces </a></p>
+      </form>
     </div>
 
     {% include 'footer/footer.html' %}
-      
-    </body>
-  </html>
+  </body>
+</html>
