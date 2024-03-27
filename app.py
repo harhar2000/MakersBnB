@@ -73,7 +73,7 @@ def get_login():
 def login_user():
     if 'token' in session:
         response = {'token': session['token'], 'message': 'Already logged in'}
-        return Response(json.dumps(response), status=200, mimetyoe='application/json')
+        return Response(json.dumps(response), status=200, mimetype='application/json')
     
     else:
         connection = get_flask_database_connection(app)
