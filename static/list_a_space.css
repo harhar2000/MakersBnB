@@ -89,12 +89,7 @@ header {
 .list-a-space-form-container input[type="submit"]:hover {
   background-color: #1d2a4a;
 }
-.navbar-custom .nav-link:hover,
-.button:hover,
-input[type="submit"]:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
-}
+
 .navigation {
   text-align: right;
   margin-top: -40px;
@@ -126,21 +121,7 @@ input[type="submit"]:hover {
 .header-nav a:hover {
   color: #b3962f; /* Darker yellow on hover */
 }
-.navbar-custom .navbar-brand svg {
-  height: 40px !important;
-  width: auto;
-}
-.navbar-custom .navbar-nav .nav-link,
-.navbar-custom .btn {
-  color: #fff;
-}
-.navbar-custom .navbar-nav .nav-link:hover,
-.navbar-custom .btn:hover {
-  color: #d4af37;
-}
-.navbar-custom .btn {
-  background-color: #d4af37;
-}
+
 .social-media {
   margin: 5px 0;
 }

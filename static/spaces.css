@@ -37,29 +37,7 @@ header {
   text-align: center;
   width: 100%;
 }
-.navbar-custom {
-  background-color: #2a3d66;
-  color: #fff;
-  margin: 0;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.navbar-custom .navbar-brand svg {
-  height: 40px;
-  width: auto;
-}
-.navbar-custom .navbar-nav .nav-link,
-.navbar-custom .btn {
-  color: #fff;
-}
-.navbar-custom .navbar-nav .nav-link:hover, /* Hover effect for nav links */
-        .navbar-custom .btn:hover {
-  /* Hover effect for buttons */
-  color: #d4af37; /* Change text color on hover */
-}
-.navbar-custom .btn {
-  background-color: #d4af37;
-}
+
 .content-wrapper {
   flex-grow: 1;
   display: flex;

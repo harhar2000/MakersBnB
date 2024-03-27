@@ -69,43 +69,7 @@ header {
 .login-form-container input[type="submit"]:hover {
   background-color: #1d2a4a;
 }
-.navbar-custom {
-  background-color: #2a3d66;
-  color: #fff;
-  margin: 0;
-  width: 100%;
-}
-.navbar-custom .navbar-brand svg {
-  height: 40px;
-  width: auto;
-}
-.navbar-custom .navbar-nav .nav-link,
-.navbar-custom .btn {
-  color: #fff;
-}
-.navbar-custom .navbar-nav .nav-link {
-  color: #fff;
-  font-size: 18px; /* Font size for the links */
-}
-.navbar-custom .navbar-nav .nav-link:hover, /* Hover effect for nav links */
-.navbar-custom .btn:hover {
-  /* Hover effect for buttons */
-  color: #d4af37; /* Change text color on hover */
-}
-.login-form-container input[type="submit"]:hover {
-  color: #d4af37; /* Change text color to yellow on hover */
-  background-color: #1d2a4a; /* Keep the background color change on hover */
-}
-.navbar-custom .nav-link:hover,
-.button:hover,
-input[type="submit"]:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
-}
 
-.navbar-custom .btn {
-  background-color: #d4af37;
-}
 a {
   color: #007bff;
   text-decoration: none;
