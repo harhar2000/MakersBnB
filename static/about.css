@@ -1,0 +1,141 @@
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: "Open Sans", sans-serif; /* More modern font */
+  font-size: 16px;
+  line-height: 1.8; /* Increased line height for readability */
+  margin: 0;
+  padding: 0;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.body-content {
+  animation: fadeIn 0.5s ease-in;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #2a3d66;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0px 0;
+  text-align: center;
+}
+.content-container {
+  max-width: 950px; /* Adjust the width as needed */
+  margin: -2px auto;
+  text-align: left; /* Left align the text within the container */
+}
+.container {
+  max-width: 1200px; /* Larger width for better layout */
+  margin: auto;
+  padding: 0 20px; /* Padding for content */
+  overflow: hidden;
+}
+.navigation {
+  text-align: right;
+  margin-top: -40px;
+  padding-right: 10px;
+}
+.navigation a {
+  color: #d4af37;
+  margin-left: 20px;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+.navigation a:hover {
+  color: #b3962f;
+}
+
+.navigation-link {
+  font-size: 180px; /* Increased font size */
+  /* Add other styling as needed */
+}
+.center {
+  text-align: center;
+  margin-top: 50px;
+}
+h1 {
+  font-size: 3em;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 20px;
+  color: #2a3d66; /* Match the primary color scheme */
+}
+h2 {
+  font-size: 1.75em; /* Slightly larger for emphasis */
+  font-family: "Montserrat", sans-serif;
+  color: #666;
+  margin-bottom: 30px;
+}
+.button {
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2a3d66;
+  color: white;
+  border-radius: 5px;
+  border: none; /* Remove border for cleaner look */
+}
+.button:hover {
+  transform: scale(1.05);
+  background-color: #1d2a4a;
+}
+.testimonials {
+  background-color: #ffffff;
+  padding: 10px; /* More padding for space */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 750px; /* Larger for better layout */
+  margin: 20px auto;
+  font-family: "Arial", sans-serif;
+}
+.testimonials-grid {
+  display: flex; /* Enables flexbox layout */
+  justify-content: space-around; /* Spaces out the child elements evenly */
+  align-items: stretch; /* Aligns items vertically */
+  flex-wrap: wrap; /* Allows items to wrap into the next line on smaller screens */
+}
+.testimonial-item {
+  background-color: #f9f9f9;
+  border: 1px solid #eaeaea;
+  padding: 10px; /* More padding for space */
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  flex: 1 1 45%; /* Adjusts flex-grow, flex-shrink, and flex-basis */
+  min-width: 280px; /* Minimum width for each testimonial */
+  max-width: 45%; /* Maximum width for each testimonial */
+  box-sizing: border-box;
+}
+.testimonial-item p {
+  font-size: 16px; /* Larger font size for readability */
+  color: #555;
+}
+.testimonial-item img {
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.testimonial-item strong {
+  font-size: 15px; /* Slightly larger for emphasis */
+  color: #333;
+  display: block;
+  margin-top: 10px;
+}

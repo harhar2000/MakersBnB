@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, redirect, session, Response
+from flask import Flask, request, render_template, redirect, session, Response, send_from_directory
 from flask_bootstrap import Bootstrap
 from lib.database_connection import get_flask_database_connection
 from lib.space_repository import SpaceRepository
@@ -20,12 +20,12 @@ Bootstrap(app)
 """
 Routes for Users
 """
-@app.route('/index', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_index():
     return render_template('users/index.html')
 
 
-@app.route("/index/new")
+@app.route("/signUp")
 def get_sign_up_page():
     return render_template("users/new.html")
 
@@ -35,7 +35,7 @@ def get_about():
     return render_template('users/about.html')
 
 
-@app.route("/index/new", methods=["POST"])
+@app.route("/signUp", methods=["POST"])
 def create_user():
 
     if 'token' in session:
@@ -73,7 +73,7 @@ def get_login():
 def login_user():
     if 'token' in session:
         response = {'token': session['token'], 'message': 'Already logged in'}
-        return Response(json.dumps(response), status=200, mimetyoe='application/json')
+        return Response(json.dumps(response), status=200, mimetype='application/json')
     
     else:
         connection = get_flask_database_connection(app)
@@ -150,6 +150,13 @@ def get_requests_page():
     spaces = repository.find_by_username(user)
 
     return render_template('spaces/requests.html', spaces=spaces)
+
+
+
+@app.route('/dist/<path:filename>')
+def serve_static(filename):
+    root_dir = os.path.dirname(os.getcwd())
+    return send_from_directory(os.path.join(root_dir, 'dist'), filename)
 
 # start the server and set the secret key and session type
 if __name__ == '__main__':
