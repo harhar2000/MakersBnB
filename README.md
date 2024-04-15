@@ -49,7 +49,7 @@ Organised into subdirectories, these HTML templates define the structure of the 
 
 - `about.html`: Provides information about MakersBnB.
 - `index.html`: The homepage template.
-- `new.html`: Used for creating new user accounts.
+- `signUp.html`: Used for creating new user accounts.
 
 ### Additional Components
 

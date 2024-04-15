@@ -27,7 +27,7 @@ def get_index():
 
 @app.route("/signUp")
 def get_sign_up_page():
-    return render_template("users/new.html")
+    return render_template("users/signUp.html")
 
 
 @app.route("/index/about", methods=['GET'])
@@ -54,7 +54,7 @@ def create_user():
 
         if not user.is_valid():
             errors = user.generate_errors()
-            return render_template("users/new.html", errors=errors)
+            return render_template("users/signUp.html", errors=errors)
 
         repository.create(user)
 
