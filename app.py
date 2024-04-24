@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 from flask import Flask, request, render_template, redirect, session, Response, send_from_directory
 from flask_bootstrap import Bootstrap
 from lib.database_connection import get_flask_database_connection
@@ -9,13 +10,60 @@ from lib.login import LoginUser
 from lib.login_validator import LoginValidator
 from lib.users_repository import *
 from lib.users import *
+import boto3, botocore
+# from botocore.exceptions import NoCredentialsError
+
+
 
 import json
 import secrets
 
 # Create a new Flask app
 app = Flask(__name__)
+# S3_BUCKET = 'makersbnb'
 Bootstrap(app)
+
+
+"""
+Routes for file upload
+"""
+load_dotenv()
+
+app.config['S3_BUCKET'] = 'makersbnb'
+app.config['S3_KEY'] = os.environ.get("AWS_ACCESS_KEY")
+app.config['S3_SECRET'] = os.environ.get("AWS_ACCESS_SECRET")
+app.config['S3_LOCATION'] = 'http://{}.s3.amazonaws.com/'.format(S3_BUCKET)
+
+s3 = boto3.client(
+    "s3",
+    aws_access_key_id=app.config['S3_KEY'],
+    aws_secret_access_key=app.config['S3_SECRET']
+)
+
+app.route("/upload", methods = ["POST"])
+
+def upload_file():
+    if "user_file" not in request.files:
+        return "No user_file key in request.files"
+
+    file = request.files["user_file"]
+
+    if file.filename == "":
+        return "Please select a file"
+
+    if file:
+        file.filename = secure_filename(file.filename)
+        output = send_to_s3(file, app.config["S3_BUCKET"])
+        return str(output)
+
+    else:
+        return redirect("/upload")
+
+
+
+
+
+
 
 """
 Routes for Users
