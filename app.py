@@ -1,5 +1,6 @@
 import os
-from flask import Flask, request, render_template, redirect, session, Response
+from dotenv import load_dotenv
+from flask import Flask, request, render_template, redirect, session, Response, send_from_directory
 from flask_bootstrap import Bootstrap
 from lib.database_connection import get_flask_database_connection
 from lib.space_repository import SpaceRepository
@@ -9,25 +10,72 @@ from lib.login import LoginUser
 from lib.login_validator import LoginValidator
 from lib.users_repository import *
 from lib.users import *
+import boto3, botocore
+# from botocore.exceptions import NoCredentialsError
+
+
 
 import json
 import secrets
 
 # Create a new Flask app
 app = Flask(__name__)
+# S3_BUCKET = 'makersbnb'
 Bootstrap(app)
+
+
+"""
+Routes for file upload
+"""
+load_dotenv()
+
+app.config['S3_BUCKET'] = 'makersbnb'
+app.config['S3_KEY'] = os.environ.get("AWS_ACCESS_KEY")
+app.config['S3_SECRET'] = os.environ.get("AWS_ACCESS_SECRET")
+app.config['S3_LOCATION'] = 'http://{}.s3.amazonaws.com/'.format(S3_BUCKET)
+
+s3 = boto3.client(
+    "s3",
+    aws_access_key_id=app.config['S3_KEY'],
+    aws_secret_access_key=app.config['S3_SECRET']
+)
+
+app.route("/upload", methods = ["POST"])
+
+def upload_file():
+    if "user_file" not in request.files:
+        return "No user_file key in request.files"
+
+    file = request.files["user_file"]
+
+    if file.filename == "":
+        return "Please select a file"
+
+    if file:
+        file.filename = secure_filename(file.filename)
+        output = send_to_s3(file, app.config["S3_BUCKET"])
+        return str(output)
+
+    else:
+        return redirect("/upload")
+
+
+
+
+
+
 
 """
 Routes for Users
 """
-@app.route('/index', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_index():
     return render_template('users/index.html')
 
 
-@app.route("/index/new")
+@app.route("/signUp")
 def get_sign_up_page():
-    return render_template("users/new.html")
+    return render_template("users/signUp.html")
 
 
 @app.route("/index/about", methods=['GET'])
@@ -35,7 +83,7 @@ def get_about():
     return render_template('users/about.html')
 
 
-@app.route("/index/new", methods=["POST"])
+@app.route("/signUp", methods=["POST"])
 def create_user():
 
     if 'token' in session:
@@ -54,7 +102,7 @@ def create_user():
 
         if not user.is_valid():
             errors = user.generate_errors()
-            return render_template("users/new.html", errors=errors)
+            return render_template("users/signUp.html", errors=errors)
 
         repository.create(user)
 
@@ -73,7 +121,7 @@ def get_login():
 def login_user():
     if 'token' in session:
         response = {'token': session['token'], 'message': 'Already logged in'}
-        return Response(json.dumps(response), status=200, mimetyoe='application/json')
+        return Response(json.dumps(response), status=200, mimetype='application/json')
     
     else:
         connection = get_flask_database_connection(app)
@@ -150,6 +198,13 @@ def get_requests_page():
     spaces = repository.find_by_username(user)
 
     return render_template('spaces/requests.html', spaces=spaces)
+
+
+
+@app.route('/dist/<path:filename>')
+def serve_static(filename):
+    root_dir = os.path.dirname(os.getcwd())
+    return send_from_directory(os.path.join(root_dir, 'dist'), filename)
 
 # start the server and set the secret key and session type
 if __name__ == '__main__':

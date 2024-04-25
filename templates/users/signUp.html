@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MakersBnB</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/new.css" />
+  </head>
+
+  <body style="display: flex; flex-direction: column; min-height: 100vh">
+    {% include 'navbar/navbar.html' %}
+    <div class="signup-form-container">
+      <h2>Sign up to MakersBnB!</h2>
+      <form action="/signUp" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="user_name" name="user_name" /><br />
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" /><br />
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="user_password"
+          name="user_password"
+        /><br /><br />
+        <input type="submit" value="Submit" class="button" />
+      </form>
+      <br />
+      <p><a href="/">Back to Homepage!</a></p>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="testimonials">
+      <div class="container testimonials-grid">
+        <div class="testimonial-item">
+          <p>
+            "Stayed here for a week and discovered the meaning of life... or
+            maybe it was just the fantastic coffee provided. Either way, 10/10
+            would stay again."
+          </p>
+          <strong>- Sam T.</strong>
+        </div>
+        <div class="testimonial-item">
+          <p>
+            "Perfect location! I could see the city skyline if I hung out the
+            window and squinted. Absolutely breathtaking (the view and the
+            hanging part)."
+          </p>
+          <strong>- Jamie L.</strong>
+        </div>
+      </div>
+    </div>
+
+    {% include 'footer/footer.html' %}
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -11,4 +11,3 @@ name - text
 user_id - foreign key
 price - int
 description - text
-
